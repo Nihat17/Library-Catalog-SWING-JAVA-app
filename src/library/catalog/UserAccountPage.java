@@ -25,7 +25,7 @@ public class UserAccountPage extends javax.swing.JFrame {
     }
 
     private void fillUserDetails() {
-        idField.setText(String.valueOf(user.getUserID()));
+        idField.setText(String.valueOf(user.getID()));
         firstNameField.setText(user.getFirstName());
         lastNameField.setText(user.getLastName());
         numberField.setText(user.getPhoneNumber());
