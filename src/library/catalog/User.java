@@ -6,11 +6,11 @@ package library.catalog;
  * and open the template in the editor.
  */
 
-public class User extends Library{
-    private String firstName;
+public class User extends Personnel{
+    /*private String firstName;
     private String lastName;
     private int userID;
-    private String phoneNumber;
+    private String phoneNumber;*/
 
     
    
@@ -49,7 +49,7 @@ public class User extends Library{
     }
 
     public int getUserID() {
-        return userID;
+        return ID;
     }
 
     public String getPhoneNumber() {
@@ -58,11 +58,11 @@ public class User extends Library{
 
     public int setuserID(String id){
         if(id.matches("\\d+") && !id.isEmpty()) 
-           userID = Integer.parseInt(id);
+           ID = Integer.parseInt(id);
         else 
-            userID = 0;
+            ID = 0;
             
-        return userID;
+        return ID;
     }
     
     public String setFirstName(String firstName){

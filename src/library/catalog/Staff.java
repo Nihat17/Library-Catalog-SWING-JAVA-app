@@ -9,9 +9,9 @@ package library.catalog;
  *
  * @author marshall
  */
-public class Staff extends Library {
-    int stuffID;
-    String firstName, lastName, phoneNumber;
+public class Staff extends Personnel {
+   /* int stuffID;
+    String firstName, lastName, phoneNumber; */
     
     @Override
     public Return checkforTypo(String ID, String firstName, String lastName, String number,boolean checkNumber){
@@ -44,7 +44,7 @@ public class Staff extends Library {
     }
     
     public int getStaffID() {
-        return stuffID;
+        return ID;
     }  
 
     public String getFirstName() {
@@ -57,11 +57,11 @@ public class Staff extends Library {
    
      public int setStaffID(String id){
         if(id.matches("\\d+") && !id.isEmpty()) 
-           stuffID = Integer.parseInt(id);
+           ID = Integer.parseInt(id);
         else 
-            stuffID = 0;
+            ID = 0;
             
-        return stuffID;
+        return ID;
     }
     
     public String setFirstName(String firstName){
