@@ -52,6 +52,11 @@ public class StaffAccountPage extends javax.swing.JFrame {
         staffAccountLabel.setText("Staff Account");
 
         addBookButton.setText("Add Book");
+        addBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBookButtonActionPerformed(evt);
+            }
+        });
 
         idLabel.setText("Staff ID:");
 
@@ -85,7 +90,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(numberLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addComponent(numberField)
                         .addGap(194, 194, 194))
                     .addGroup(layout.createSequentialGroup()
@@ -123,6 +128,11 @@ public class StaffAccountPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
+        AddBookPage menu = new AddBookPage(this, false);
+        menu.setVisible(true);
+    }//GEN-LAST:event_addBookButtonActionPerformed
 
     private void fillStaffDetails() {
      idField.setText(String.valueOf(staff.getID()));
