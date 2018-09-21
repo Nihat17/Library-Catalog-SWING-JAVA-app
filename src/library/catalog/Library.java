@@ -21,14 +21,14 @@ public abstract class Library {
    private String publicationDate;
    private int numberOfBooks;
    
-   public Library(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks){
+  /* public Library(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks){
        this.bookID = bookID;
        this.author = author;
        this.title = title;
        this.pageCount = pageCount;
        this.publicationDate = publicationDate;
        this.numberOfBooks = numberOfBooks;
-    }
+    } */
    
   
     public int getBookID() {
@@ -53,9 +53,7 @@ public abstract class Library {
 
     public int getNumberOfBooks() {
         return numberOfBooks;
-    }  
-    
-   public abstract Return checkforTypo(String ID, String firstName, String lastName, String number,boolean checkNumber);
+    }         
        
    public static boolean checkForLength(StringBuilder warnings){      
        boolean output = true;
