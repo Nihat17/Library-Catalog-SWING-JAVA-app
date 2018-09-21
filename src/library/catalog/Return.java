@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package library.catalog;
+
+
+public class Return {
+    User user = new User();
+    StringBuilder warnings = new StringBuilder();
+    DBService database = new DBService();
+    Staff staff = new Staff();
+    Return(User user, StringBuilder warnings){
+        this.user = user;
+        this.warnings = warnings;
+    }
+    Return(){
+        
+    }
+    Return(Staff staff, StringBuilder warnings){
+        this.staff = staff;
+        this.warnings = warnings;
+    }
+    
+    public User getUser() {
+        return user;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public StringBuilder getWarnings() {
+        return warnings;
+    }
+    
+    public boolean addUser(User user) throws ClassNotFoundException{
+       return (database.addUser(user) > 0);
+    }
+    
+    public boolean searchUser(User user) throws ClassNotFoundException{
+       return(database.searchUser(user) == true);
+    }
+    public boolean addStaff(Staff staff){
+        return(database.addStuff(staff) == true);
+    }
+    public boolean searchStaff(Staff staff){
+        return(database.searchStaff(staff) == true);
+    }
+    
+}
