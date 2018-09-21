@@ -125,7 +125,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fillStaffDetails() {
-     idField.setText(String.valueOf(staff.getStaffID()));
+     idField.setText(String.valueOf(staff.getID()));
      firstNameField.setText(staff.getFirstName());
      lastNameField.setText(staff.getLastName());
      numberField.setText(staff.getPhoneNumber());

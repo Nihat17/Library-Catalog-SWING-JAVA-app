@@ -55,7 +55,7 @@ public class DBService {
             PreparedStatement addUser = connection.
                     prepareStatement(addUserSql, Statement.RETURN_GENERATED_KEYS);
             
-            addUser.setInt(1, user.getUserID());
+            addUser.setInt(1, user.getID());
             addUser.setString(2, user.getFirstName());
             addUser.setString(3, user.getLastName());
             
@@ -66,7 +66,7 @@ public class DBService {
             PreparedStatement addPhoneNumber = connection.
                     prepareStatement(addPhoneNumberSQL, Statement.RETURN_GENERATED_KEYS);
             
-            addPhoneNumber.setInt(1, user.getUserID());
+            addPhoneNumber.setInt(1, user.getID());
             addPhoneNumber.setString(2, user.getPhoneNumber());
             successForNumber = addPhoneNumber.executeUpdate();            
             connection.close();
@@ -86,7 +86,7 @@ public class DBService {
             //ADD Stuff 
             String addUserSQL = "INSERT INTO Staff(ID, FirstName, LastName) VALUES(?,?,?)";
             PreparedStatement addStaffStatement = connect.prepareStatement(addUserSQL, Statement.RETURN_GENERATED_KEYS);
-            addStaffStatement.setInt(1, staff.getStaffID());
+            addStaffStatement.setInt(1, staff.getID());
             addStaffStatement.setString(2, staff.getFirstName());
             addStaffStatement.setString(3, staff.getLastName());
             
@@ -102,7 +102,7 @@ public class DBService {
             String addNumberSQL = "INSERT INTO PhoneNumbers(StaffID, PhoneNumber) VALUES(?,?)";
             PreparedStatement addNumberStatement = connect.prepareStatement
                 (addNumberSQL, Statement.RETURN_GENERATED_KEYS);
-            addNumberStatement.setInt(1, staff.getStaffID());
+            addNumberStatement.setInt(1, staff.getID());
             addNumberStatement.setString(2, staff.getPhoneNumber());
             
             successOfAddingNumber = addNumberStatement.executeUpdate();
@@ -126,7 +126,7 @@ public class DBService {
            
            searchUser.setString(1, user.getFirstName());
            searchUser.setString(2, user.getLastName());
-           searchUser.setInt(3, user.getUserID());
+           searchUser.setInt(3, user.getID());
                                
            ResultSet searchUserResult;
            searchUserResult = searchUser.executeQuery();
@@ -157,7 +157,7 @@ public class DBService {
            
            searchUser.setString(1, staff.getFirstName());
            searchUser.setString(2, staff.getLastName());
-           searchUser.setInt(3, staff.getStaffID());
+           searchUser.setInt(3, staff.getID());
                                
            ResultSet searchUserResult;
            searchUserResult = searchUser.executeQuery();
