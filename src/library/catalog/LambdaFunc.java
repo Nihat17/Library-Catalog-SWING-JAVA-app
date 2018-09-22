@@ -6,8 +6,14 @@
 package library.catalog;
 
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-
+//CFT stands for CHECK FOR TYPO
 public interface LambdaFunc {
    static Function<StringBuilder, Boolean> checkLength = (str) -> str.length() == 0;
+   
+   static Predicate<String> CFT_NAME = (firstName) -> firstName.chars()
+           .allMatch(Character::isLetter) && !firstName.isEmpty();
+   
+   static Predicate<String> CFT_INT = (number) -> number.matches("\\d+") && !number.isEmpty();
 }
