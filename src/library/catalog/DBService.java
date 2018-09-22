@@ -176,7 +176,7 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
     
-   boolean addBook(Library library){
+   boolean addBook(Book book){
        int successForAddBook = -1;
        try {
             Connection connect = connect();
@@ -185,12 +185,12 @@ public class DBService {
                     + " VALUES(?,?,?,?,?,?)";
             PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
                     Statement.RETURN_GENERATED_KEYS);
-            addBookStatement.setInt(1, library.getBookID());
-            addBookStatement.setString(2, library.getTitle());
-            addBookStatement.setString(3, library.getAuthor());
-            addBookStatement.setInt(4, library.getPageCount());
-            addBookStatement.setString(5, library.getPublicationDate());
-            addBookStatement.setInt(6, library.getNumberOfBooks());
+            addBookStatement.setInt(1, book.getBookID());
+            addBookStatement.setString(2, book.getTitle());
+            addBookStatement.setString(3, book.getAuthor());
+            addBookStatement.setInt(4, book.getPageCount());
+            addBookStatement.setString(5, book.getPublicationDate());
+            addBookStatement.setInt(6, book.getNumberOfBooks());
             
             successForAddBook = addBookStatement.executeUpdate();
             

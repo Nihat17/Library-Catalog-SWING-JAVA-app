@@ -49,8 +49,8 @@ public class Return {
         return(database.searchStaff(staff));
     }
     
-    public boolean addBook(Library library){
-        return(database.addBook(library));
+    public boolean addBook(Book book){
+        return(database.addBook(book));
     }
     
 }

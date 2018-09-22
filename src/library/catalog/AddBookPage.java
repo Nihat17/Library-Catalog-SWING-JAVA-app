@@ -30,8 +30,8 @@ public class AddBookPage extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        libraryIDLabel = new javax.swing.JLabel();
-        libraryIDField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
+        idField = new javax.swing.JTextField();
         titleLabel = new javax.swing.JLabel();
         titleField = new javax.swing.JTextField();
         authorLabel = new javax.swing.JLabel();
@@ -52,9 +52,9 @@ public class AddBookPage extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(500, 400));
         getContentPane().setLayout(new java.awt.GridLayout(7, 2, 20, 20));
 
-        libraryIDLabel.setText("Library ID:");
-        getContentPane().add(libraryIDLabel);
-        getContentPane().add(libraryIDField);
+        idLabel.setText("Library ID:");
+        getContentPane().add(idLabel);
+        getContentPane().add(idField);
 
         titleLabel.setText("Title:");
         getContentPane().add(titleLabel);
@@ -114,51 +114,17 @@ public class AddBookPage extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
+       addDetailsOfBook();
     }//GEN-LAST:event_addButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddBookPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddBookPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddBookPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddBookPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                AddBookPage dialog = new AddBookPage(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    
+    private void addDetailsOfBook() {
+        Book book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
+            Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
+                Integer.parseInt(nOfBooksField.getText()));
+        
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JTextField authorField;
@@ -166,9 +132,9 @@ public class AddBookPage extends javax.swing.JDialog {
     private javax.swing.JButton cancelButton;
     private javax.swing.JMenuItem exitButton;
     private javax.swing.JMenu fileMenuButton;
+    private javax.swing.JTextField idField;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField libraryIDField;
-    private javax.swing.JLabel libraryIDLabel;
     private javax.swing.JTextField nOfBooksField;
     private javax.swing.JLabel nOfBooksLabel;
     private javax.swing.JTextField pageCountField;
@@ -178,4 +144,5 @@ public class AddBookPage extends javax.swing.JDialog {
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
+   
 }

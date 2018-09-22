@@ -53,12 +53,12 @@
     <Property name="verticalGap" type="int" value="20"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="libraryIDLabel">
+    <Component class="javax.swing.JLabel" name="idLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Library ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="libraryIDField">
+    <Component class="javax.swing.JTextField" name="idField">
     </Component>
     <Component class="javax.swing.JLabel" name="titleLabel">
       <Properties>
