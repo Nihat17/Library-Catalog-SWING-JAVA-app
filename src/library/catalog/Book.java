@@ -37,19 +37,19 @@ public class Book extends Library{
         if(!LambdaFunc.CFT_INT.test(id))
             warnings.append("Please use just digits for ID.\n");            
         
-        else if(!LambdaFunc.CFT_STR.test(title))
+        if(!LambdaFunc.CFT_STR.test(title))
             warnings.append("Please use letters for title.\n");
         
-        else if(!LambdaFunc.CFT_STR.test(author))
+        if(!LambdaFunc.CFT_STR.test(author))
             warnings.append("Please use letters for author.\n");
         
-        else if(!LambdaFunc.CFT_INT.test(pageCount))
+        if(!LambdaFunc.CFT_INT.test(pageCount))
             warnings.append("Please use letters for page count.\n");
         
-        else if(!LambdaFunc.CFT_DATE.test(publicationDate))
+        if(!LambdaFunc.CFT_DATE.test(publicationDate))
             warnings.append("Please use dd-MM-yyyy format for publication date.\n");
         
-        else if(!LambdaFunc.CFT_INT.test(numberOfBooks))
+        if(!LambdaFunc.CFT_INT.test(numberOfBooks))
             warnings.append("Please use numbers for number of books field. \n");
         
         return warnings;
