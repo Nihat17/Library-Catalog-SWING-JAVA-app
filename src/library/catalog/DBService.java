@@ -44,6 +44,7 @@ public class DBService {
         
         return connection;
     }
+    
     int addUser(User user) throws ClassNotFoundException{
         int successForUsers = -1, successForNumber = -1;
         
@@ -175,5 +176,27 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
     
-    
+   boolean addBook(Library library){
+       int successForAddBook = -1;
+       try {
+            Connection connect = connect();
+            String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
+                    + "PublicationDate, NumberOfBooks)"
+                    + " VALUES(?,?,?,?,?,?)";
+            PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            addBookStatement.setInt(1, library.getBookID());
+            addBookStatement.setString(2, library.getTitle());
+            addBookStatement.setString(3, library.getAuthor());
+            addBookStatement.setInt(4, library.getPageCount());
+            addBookStatement.setString(5, library.getPublicationDate());
+            addBookStatement.setInt(6, library.getNumberOfBooks());
+            
+            successForAddBook = addBookStatement.executeUpdate();
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return (successForAddBook > -1);
+   } 
 }
