@@ -115,6 +115,7 @@ public class AddBookPage extends javax.swing.JDialog {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
        addDetailsOfBook();
+       
     }//GEN-LAST:event_addButtonActionPerformed
 
     

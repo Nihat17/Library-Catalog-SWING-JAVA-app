@@ -11,9 +11,9 @@ public class Book extends Library{
    private Enum status;
    private String dueDate;
 
-    public Book(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks) {
-        super(bookID, title, author, pageCount, publicationDate, numberOfBooks);
-    }
+   public Book(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks) {
+       super(bookID, title, author, pageCount, publicationDate, numberOfBooks);
+   }
         
    public String getISBN() {
        return ISBN;
@@ -26,6 +26,11 @@ public class Book extends Library{
    public String getDueDate() {
        return dueDate;
    }
+
+    @Override
+    public StringBuilder checkForType(String id, String title, String author, String pageCount, String publicationDate, String numberOfBooks) {
+        
+    }
   
    
    
