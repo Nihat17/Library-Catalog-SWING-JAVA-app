@@ -14,7 +14,11 @@ public class Book extends Library{
    public Book(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks) {
        super(bookID, title, author, pageCount, publicationDate, numberOfBooks);
    }
-        
+       
+   public Book(){
+       
+   }
+   
    public String getISBN() {
        return ISBN;
    }

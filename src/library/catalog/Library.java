@@ -29,7 +29,9 @@ public abstract class Library {
        this.publicationDate = publicationDate;
        this.numberOfBooks = numberOfBooks;
     } 
-   
+   public Library(){
+      
+   } 
    
     public int getBookID() {
         return bookID;

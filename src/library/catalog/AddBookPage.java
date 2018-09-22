@@ -5,6 +5,10 @@
  */
 package library.catalog;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author marshall
@@ -14,6 +18,7 @@ public class AddBookPage extends javax.swing.JDialog {
     /**
      * Creates new form AddBookPage
      */
+    Book book = new Book();
     public AddBookPage(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setTitle("Add Book Page");
@@ -114,15 +119,22 @@ public class AddBookPage extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-       addDetailsOfBook();
+      StringBuilder warnings; 
+      warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
+              pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText()); 
        
+      if(LambdaFunc.CHECK_LENGTH.apply(warnings))
+         addDetailsOfBook();       
+      else{
+          JOptionPane.showMessageDialog(this, warnings, "Warnings!", JOptionPane.WARNING_MESSAGE);
+      }
     }//GEN-LAST:event_addButtonActionPerformed
-
     
     private void addDetailsOfBook() {
         Book book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
             Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
                 Integer.parseInt(nOfBooksField.getText()));
+        
         
     }
     
@@ -145,5 +157,6 @@ public class AddBookPage extends javax.swing.JDialog {
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
+  
    
 }
