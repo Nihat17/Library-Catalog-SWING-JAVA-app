@@ -40,13 +40,17 @@ public class Return {
     }
     
     public boolean searchUser(User user) throws ClassNotFoundException{
-       return(database.searchUser(user) == true);
+       return(database.searchUser(user));
     }
     public boolean addStaff(Staff staff){
-        return(database.addStuff(staff) == true);
+        return(database.addStuff(staff));
     }
     public boolean searchStaff(Staff staff){
-        return(database.searchStaff(staff) == true);
+        return(database.searchStaff(staff));
+    }
+    
+    public boolean addBook(Library library){
+        return(database.addBook(library));
     }
     
 }
