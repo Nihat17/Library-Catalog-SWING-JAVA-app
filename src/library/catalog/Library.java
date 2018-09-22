@@ -58,7 +58,7 @@ public abstract class Library {
    public static boolean checkForLength(StringBuilder warnings){      
        boolean output = true;
               
-       if(!LambdaFunc.checkLength.apply(warnings)){
+       if(!LambdaFunc.CHECK_LENGTH.apply(warnings)){
            JOptionPane.showMessageDialog(null, warnings.toString(), 
                     "Input warnings",JOptionPane.WARNING_MESSAGE);
            output = false;

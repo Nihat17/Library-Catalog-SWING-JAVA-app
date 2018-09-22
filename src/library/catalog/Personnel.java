@@ -32,7 +32,7 @@ public abstract class Personnel {
     }
     
      public int setID(String id){
-        if(id.matches("\\d+") && !id.isEmpty()) 
+        if(LambdaFunc.CFT_INT.test(id)) 
            ID = Integer.parseInt(id);
         else 
             ID = 0;
@@ -41,7 +41,7 @@ public abstract class Personnel {
     }
     
     public String setFirstName(String firstName){
-        if(firstName.chars().allMatch(Character::isLetter) && !firstName.isEmpty()){
+        if(LambdaFunc.CFT_NAME.test(firstName)){
            this.firstName = firstName; 
         }
         else 
@@ -51,7 +51,7 @@ public abstract class Personnel {
     }
     
     public String setLastName(String lastName){
-        if(lastName.chars().allMatch(Character::isLetter) && !lastName.isEmpty()){
+        if(LambdaFunc.CFT_NAME.test(lastName)){
             this.lastName = lastName;
         }
         else 
@@ -61,7 +61,7 @@ public abstract class Personnel {
     }
     
     public String setPhoneNumber(String phoneNumber){
-        if(phoneNumber.matches("\\d+") && !phoneNumber.isEmpty()){
+        if(LambdaFunc.CFT_INT.test(phoneNumber)){
             this.phoneNumber = phoneNumber;
         }
         else 
