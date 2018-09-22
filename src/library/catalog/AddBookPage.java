@@ -16,6 +16,7 @@ public class AddBookPage extends javax.swing.JDialog {
      */
     public AddBookPage(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setTitle("Add Book Page");
         setLocationRelativeTo(parent);
         initComponents();
     }
@@ -48,7 +49,8 @@ public class AddBookPage extends javax.swing.JDialog {
         exitButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(7, 2, 7, 7));
+        setPreferredSize(new java.awt.Dimension(500, 400));
+        getContentPane().setLayout(new java.awt.GridLayout(7, 2, 20, 20));
 
         libraryIDLabel.setText("Library ID:");
         getContentPane().add(libraryIDLabel);
