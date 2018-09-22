@@ -41,7 +41,7 @@ public abstract class Personnel {
     }
     
     public String setFirstName(String firstName){
-        if(LambdaFunc.CFT_NAME.test(firstName)){
+        if(LambdaFunc.CFT_STR.test(firstName)){
            this.firstName = firstName; 
         }
         else 
@@ -51,7 +51,7 @@ public abstract class Personnel {
     }
     
     public String setLastName(String lastName){
-        if(LambdaFunc.CFT_NAME.test(lastName)){
+        if(LambdaFunc.CFT_STR.test(lastName)){
             this.lastName = lastName;
         }
         else 

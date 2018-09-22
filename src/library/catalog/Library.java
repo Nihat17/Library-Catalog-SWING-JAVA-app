@@ -67,7 +67,7 @@ public abstract class Library {
       return output;
    }
    
-   public abstract StringBuilder checkForType(String id, String title, String author,
+   public abstract StringBuilder checkForTypo(String id, String title, String author,
            String pageCount, String publicationDate, String numberOfBooks);
          
 }
