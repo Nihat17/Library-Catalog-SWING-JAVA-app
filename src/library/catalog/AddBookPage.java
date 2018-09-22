@@ -19,6 +19,8 @@ public class AddBookPage extends javax.swing.JDialog {
      * Creates new form AddBookPage
      */
     Book book = new Book();
+    Return retObj = new Return();
+    
     public AddBookPage(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setTitle("Add Book Page");
@@ -123,16 +125,26 @@ public class AddBookPage extends javax.swing.JDialog {
       warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
               pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText()); 
        
-      if(LambdaFunc.CHECK_LENGTH.apply(warnings))
-         addDetailsOfBook();       
+      if(LambdaFunc.CHECK_LENGTH.apply(warnings)){
+        addDetailsOfBook();       
+        boolean checkSuccess = false;        
+        if(retObj.addBook(book)){
+            JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "An error occured!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+      }
       else{
           JOptionPane.showMessageDialog(this, warnings, "Warnings!", JOptionPane.WARNING_MESSAGE);
       }
     }//GEN-LAST:event_addButtonActionPerformed
     
     private void addDetailsOfBook() {
-        Book book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
-            Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
+        Book bookObj;
+        bookObj = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
+                Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
                 Integer.parseInt(nOfBooksField.getText()));
         
         
