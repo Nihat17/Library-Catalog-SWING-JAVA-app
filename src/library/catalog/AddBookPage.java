@@ -134,12 +134,15 @@ public class AddBookPage extends javax.swing.JDialog {
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){
         addDetailsOfBook();       
-        boolean checkSuccess = false;        
+        boolean checkSuccess = false;   
+        
         if(retObj.addBook(book)){
             JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");
+            this.dispose();
         }
         else {
-            JOptionPane.showMessageDialog(this, "An error occured!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         
       }

@@ -54,8 +54,8 @@ public class Book extends Library{
         if(!LambdaFunc.CFT_INT.test(numberOfBooks))
             warnings.append("Please use numbers for number of books field. \n");
         if(!checkIfGenreMatches(genre))        
-            warnings.append("Please use one of following genres: fiction,\n" +
-                "Drama,\n" + "Romance,\n" + "Adventure,\n" + "Satire,\n" + " Horror");
+            warnings.append("Please use one of following genres: Fiction,\n" +
+                "Drama,\n" + "Romance,\n" + "Adventure,\n" + "Satire,\n" + "Horror\n" + "Undefined");
         
         return warnings;
     }   
