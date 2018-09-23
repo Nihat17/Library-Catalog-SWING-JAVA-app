@@ -11,8 +11,10 @@ public class Book extends Library{
    private Enum status;
    private String dueDate;
 
-   public Book(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks) {
-       super(bookID, title, author, pageCount, publicationDate, numberOfBooks);
+   public Book(int bookID, String title, String author, int pageCount, 
+           String publicationDate, int numberOfBooks, Enum bookGenre) {
+       
+      super(bookID, title, author, pageCount, publicationDate, numberOfBooks, bookGenre);
    }
        
    public Book(){

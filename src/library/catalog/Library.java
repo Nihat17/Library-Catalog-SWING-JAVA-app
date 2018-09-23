@@ -20,14 +20,22 @@ public abstract class Library {
    private int pageCount;
    private String publicationDate;
    private int numberOfBooks;
+   private Enum bookGenre;
+
+    public Enum getBookGenre() {
+        return bookGenre;
+    }
    
-   public Library(int bookID, String title, String author, int pageCount, String publicationDate, int numberOfBooks){
+   public Library(int bookID, String title, String author, int pageCount, 
+           String publicationDate, int numberOfBooks, Enum bookGenre){
+       
        this.bookID = bookID;
        this.author = author;
        this.title = title;
        this.pageCount = pageCount;
        this.publicationDate = publicationDate;
        this.numberOfBooks = numberOfBooks;
+       this.bookGenre = bookGenre;
     } 
    public Library(){
       
