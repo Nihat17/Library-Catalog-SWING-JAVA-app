@@ -21,11 +21,7 @@ public abstract class Library {
    private String publicationDate;
    private int numberOfBooks;
    private Enum bookGenre;
-
-    public Enum getBookGenre() {
-        return bookGenre;
-    }
-   
+     
    public Library(int bookID, String title, String author, int pageCount, 
            String publicationDate, int numberOfBooks, Enum bookGenre){
        
@@ -41,6 +37,11 @@ public abstract class Library {
       
    } 
    
+    public String getBookGenre() {
+        String genre = bookGenre.name();
+        return genre;
+    }
+    
     public int getBookID() {
         return bookID;
     }

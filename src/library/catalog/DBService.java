@@ -181,8 +181,8 @@ public class DBService {
        try {
             Connection connect = connect();
             String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
-                    + "PublicationDate, NumberOfBooks)"
-                    + " VALUES(?,?,?,?,?,?)";
+                    + "PublicationDate, NumberOfBooks, bookGenre)"
+                    + " VALUES(?,?,?,?,?,?,?)";
             
             PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
                     Statement.RETURN_GENERATED_KEYS);
@@ -192,7 +192,7 @@ public class DBService {
             addBookStatement.setInt(4, book.getPageCount());
             addBookStatement.setString(5, book.getPublicationDate());
             addBookStatement.setInt(6, book.getNumberOfBooks());
-            
+            addBookStatement.setString(7, book.getBookGenre());
             successForAddBook = addBookStatement.executeUpdate();
             
         } catch (ClassNotFoundException | SQLException ex) {

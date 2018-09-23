@@ -128,8 +128,9 @@ public class AddBookPage extends javax.swing.JDialog {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
       StringBuilder warnings; 
+      BookGenre genre = BookGenre.valueOf(bookGenreField.getText());
       warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
-              pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText()); 
+              pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText(), genre); 
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){
         addDetailsOfBook();       

@@ -54,8 +54,8 @@ public class Book extends Library{
         if(!LambdaFunc.CFT_INT.test(numberOfBooks))
             warnings.append("Please use numbers for number of books field. \n");
         if(!checkIfGenreMatches(genre))        
-            warnings.append("Please use one of following genres:  fiction,\n" +
-                "    Drama,\n" + " Romance,\n" + " Adventure,\n" + " Satire,\n" + " Horror");
+            warnings.append("Please use one of following genres: fiction,\n" +
+                "Drama,\n" + "Romance,\n" + "Adventure,\n" + "Satire,\n" + " Horror");
         
         return warnings;
     }   
@@ -63,8 +63,11 @@ public class Book extends Library{
     @Override
     public boolean checkIfGenreMatches(Enum type){
       boolean check = false;
-      for(BookGenre genre : BookGenre.values()) { 
-          check = (genre.equals(type))? true : false;
+      for(BookGenre genre : BookGenre.values()) {           
+          if(genre.equals(type)){
+              check = true;
+              break;
+          }
       }
       return check;
     }
