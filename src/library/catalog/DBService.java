@@ -183,6 +183,7 @@ public class DBService {
             String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
                     + "PublicationDate, NumberOfBooks)"
                     + " VALUES(?,?,?,?,?,?)";
+            
             PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
                     Statement.RETURN_GENERATED_KEYS);
             addBookStatement.setInt(1, book.getBookID());

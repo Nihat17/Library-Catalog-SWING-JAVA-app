@@ -142,8 +142,8 @@ public class AddBookPage extends javax.swing.JDialog {
     }//GEN-LAST:event_addButtonActionPerformed
     
     private void addDetailsOfBook() {
-        Book bookObj;
-        bookObj = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
+        
+        book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
                 Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
                 Integer.parseInt(nOfBooksField.getText()));
         

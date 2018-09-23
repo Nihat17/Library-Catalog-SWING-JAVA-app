@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 
 //CFT stands for CHECK FOR TYPO
 public interface LambdaFunc {
-   String REGEX_FOR_DATE = "^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-([12][0-9]{3})$";
+   String REGEX_FOR_DATE = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$";
     
    static Function<StringBuilder, Boolean> CHECK_LENGTH = (str) -> str.length() == 0;
    
