@@ -14,8 +14,8 @@ public interface LambdaFunc {
     
    static Function<StringBuilder, Boolean> CHECK_LENGTH = (str) -> str.length() == 0;
    
-   static Predicate<String> CFT_STR = (str) -> str.chars()
-           .allMatch(Character::isLetter) && !str.isEmpty();
+   static Predicate<String> CFT_STR = (str) ->  str.matches("^[^0-9]+$") && !str.isEmpty();
+   
    
    static Predicate<String> CFT_INT = (number) -> number.matches("\\d+") && !number.isEmpty();
    
