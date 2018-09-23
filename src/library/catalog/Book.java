@@ -12,9 +12,9 @@ public class Book extends Library{
    private String dueDate;
 
    public Book(int bookID, String title, String author, int pageCount, 
-           String publicationDate, int numberOfBooks, Enum bookGenre) {
+           String publicationDate, int numberOfBooks, Enum bookGenre, int edition) {
        
-      super(bookID, title, author, pageCount, publicationDate, numberOfBooks, bookGenre);
+      super(bookID, title, author, pageCount, publicationDate, numberOfBooks, bookGenre, edition);
    }
        
    public Book(){
@@ -34,7 +34,9 @@ public class Book extends Library{
    }
 
     @Override
-    public StringBuilder checkForTypo(String id, String title, String author, String pageCount, String publicationDate, String numberOfBooks,Enum genre) {
+    public StringBuilder checkForTypo(String id, String title, String author,
+            String pageCount, String publicationDate, String numberOfBooks,Enum genre, String edition) {
+        
         StringBuilder warnings = new StringBuilder();
         if(!LambdaFunc.CFT_INT.test(id))
             warnings.append("Please use just digits for ID.\n");            
@@ -53,10 +55,14 @@ public class Book extends Library{
         
         if(!LambdaFunc.CFT_INT.test(numberOfBooks))
             warnings.append("Please use numbers for number of books field. \n");
+        
         if(!checkIfGenreMatches(genre))        
             warnings.append("Please use one of following genres: Fiction,\n" +
                 "Drama,\n" + "Romance,\n" + "Adventure,\n" + "Satire,\n" + "Horror\n" + "Undefined");
         
+        if(!LambdaFunc.CFT_INT.test(edition))
+            warnings.append("Please use number for edition.");
+            
         return warnings;
     }   
 
@@ -72,6 +78,8 @@ public class Book extends Library{
       return check;
     }
   
-   
+    public void generateISBN(int numberOfBooks){
+        
+    }
    
 }
