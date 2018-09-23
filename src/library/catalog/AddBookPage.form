@@ -1,35 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
-  <NonVisualComponents>
-    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
-      <SubComponents>
-        <Menu class="javax.swing.JMenu" name="fileMenuButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="exitButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exit"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-      </SubComponents>
-    </Menu>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[500, 400]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -48,163 +23,180 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="titleLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="authorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bookGenreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pageCountLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="nOfBooksLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="idLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="editionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pubDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="headerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="addButtoN" min="-2" pref="151" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="cancelButton" min="-2" pref="154" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="headerLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                      <Component id="addButton" min="-2" pref="124" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="idLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="titleLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="authorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="genreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="editionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="pageCountLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="pubDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="nOfBooksLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="nOfBooksField" max="32767" attributes="0"/>
+                          <Component id="pubDateField" max="32767" attributes="0"/>
+                          <Component id="editionField" max="32767" attributes="0"/>
+                          <Component id="pageCountField" max="32767" attributes="0"/>
+                          <Component id="genreField" max="32767" attributes="0"/>
+                          <Component id="titleField" max="32767" attributes="0"/>
+                          <Component id="idField" max="32767" attributes="0"/>
+                          <Component id="authorField" min="-2" pref="154" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="110" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="nOfBooksField" alignment="0" pref="138" max="32767" attributes="0"/>
-                      <Component id="pageCountField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="pubDateField" max="32767" attributes="0"/>
-                      <Component id="editionField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cancelButton" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="idField" min="-2" pref="138" max="-2" attributes="0"/>
-                  <Component id="titleField" min="-2" pref="138" max="-2" attributes="0"/>
-                  <Component id="authorField" min="-2" pref="138" max="-2" attributes="0"/>
-                  <Component id="bookGenreField" min="-2" pref="138" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="93" max="32767" attributes="0"/>
+              <EmptySpace pref="102" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="headerLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="idField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="idLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="titleField" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="idLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="idField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="titleField" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="authorLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="genreLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="authorField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bookGenreField" min="-2" max="-2" attributes="0"/>
+                      <Component id="genreField" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="authorLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="bookGenreLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="editionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="editionField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pageCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pageCountField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="editionLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="editionField" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pubDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pubDateField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pageCountLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="pageCountField" alignment="0" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nOfBooksLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nOfBooksField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="pubDateField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nOfBooksField" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="pubDateLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="nOfBooksLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addButtoN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="addButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="cancelButton" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="headerLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add a new book to Library."/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="idLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Library ID:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="idField">
     </Component>
     <Component class="javax.swing.JLabel" name="titleLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Title:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="titleField">
-    </Component>
     <Component class="javax.swing.JLabel" name="authorLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Author:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="authorField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="bookGenreLabel">
+    <Component class="javax.swing.JLabel" name="genreLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Book genre:"/>
+        <Property name="text" type="java.lang.String" value="Genre:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="bookGenreField">
+    <Component class="javax.swing.JLabel" name="editionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edition:"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="pageCountLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Page Count:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="pageCountField">
-    </Component>
     <Component class="javax.swing.JLabel" name="pubDateLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Publication Date:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="pubDateField">
     </Component>
     <Component class="javax.swing.JLabel" name="nOfBooksLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Number of books:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JTextField" name="idField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="titleField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="authorField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="genreField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="pageCountField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="editionField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="pubDateField">
+    </Component>
     <Component class="javax.swing.JTextField" name="nOfBooksField">
     </Component>
-    <Component class="javax.swing.JButton" name="addButton">
+    <Component class="javax.swing.JButton" name="addButtoN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtoNActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cancelButton">
@@ -214,18 +206,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="editionLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edition:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="editionField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="headerLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add a new book to library."/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

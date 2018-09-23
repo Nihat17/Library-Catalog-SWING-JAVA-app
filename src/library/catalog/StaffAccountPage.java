@@ -130,7 +130,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
-        AddBookPage menu = new AddBookPage(this, false);
+        AddBookPage menu = new AddBookPage(this, true);
         menu.setVisible(true);
     }//GEN-LAST:event_addBookButtonActionPerformed
 

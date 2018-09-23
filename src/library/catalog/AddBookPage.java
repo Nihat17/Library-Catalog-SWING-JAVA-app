@@ -5,8 +5,7 @@
  */
 package library.catalog;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +23,8 @@ public class AddBookPage extends javax.swing.JDialog {
     public AddBookPage(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setTitle("Add Book Page");
-        setLocationRelativeTo(parent);
+        setLocationRelativeTo(parent);    
+        setFont();
         initComponents();
     }
 
@@ -37,31 +37,29 @@ public class AddBookPage extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        idLabel = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
-        titleLabel = new javax.swing.JLabel();
-        titleField = new javax.swing.JTextField();
-        authorLabel = new javax.swing.JLabel();
-        authorField = new javax.swing.JTextField();
-        bookGenreLabel = new javax.swing.JLabel();
-        bookGenreField = new javax.swing.JTextField();
-        pageCountLabel = new javax.swing.JLabel();
-        pageCountField = new javax.swing.JTextField();
-        pubDateLabel = new javax.swing.JLabel();
-        pubDateField = new javax.swing.JTextField();
-        nOfBooksLabel = new javax.swing.JLabel();
-        nOfBooksField = new javax.swing.JTextField();
-        addButton = new javax.swing.JButton();
-        cancelButton = new javax.swing.JButton();
-        editionLabel = new javax.swing.JLabel();
-        editionField = new javax.swing.JTextField();
         headerLabel = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        fileMenuButton = new javax.swing.JMenu();
-        exitButton = new javax.swing.JMenuItem();
+        idLabel = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        authorLabel = new javax.swing.JLabel();
+        genreLabel = new javax.swing.JLabel();
+        editionLabel = new javax.swing.JLabel();
+        pageCountLabel = new javax.swing.JLabel();
+        pubDateLabel = new javax.swing.JLabel();
+        nOfBooksLabel = new javax.swing.JLabel();
+        idField = new javax.swing.JTextField();
+        titleField = new javax.swing.JTextField();
+        authorField = new javax.swing.JTextField();
+        genreField = new javax.swing.JTextField();
+        pageCountField = new javax.swing.JTextField();
+        editionField = new javax.swing.JTextField();
+        pubDateField = new javax.swing.JTextField();
+        nOfBooksField = new javax.swing.JTextField();
+        addButtoN = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 400));
+
+        headerLabel.setText("Add a new book to Library.");
 
         idLabel.setText("Library ID:");
 
@@ -69,7 +67,9 @@ public class AddBookPage extends javax.swing.JDialog {
 
         authorLabel.setText("Author:");
 
-        bookGenreLabel.setText("Book genre:");
+        genreLabel.setText("Genre:");
+
+        editionLabel.setText("Edition:");
 
         pageCountLabel.setText("Page Count:");
 
@@ -77,10 +77,10 @@ public class AddBookPage extends javax.swing.JDialog {
 
         nOfBooksLabel.setText("Number of books:");
 
-        addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        addButtoN.setText("Add");
+        addButtoN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                addButtoNActionPerformed(evt);
             }
         });
 
@@ -91,24 +91,6 @@ public class AddBookPage extends javax.swing.JDialog {
             }
         });
 
-        editionLabel.setText("Edition:");
-
-        headerLabel.setText("Add a new book to library.");
-
-        fileMenuButton.setText("File");
-
-        exitButton.setText("Exit");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
-            }
-        });
-        fileMenuButton.add(exitButton);
-
-        jMenuBar1.add(fileMenuButton);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,140 +98,159 @@ public class AddBookPage extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLabel)
-                            .addComponent(authorLabel)
-                            .addComponent(bookGenreLabel)
-                            .addComponent(pageCountLabel)
-                            .addComponent(nOfBooksLabel)
-                            .addComponent(idLabel)
-                            .addComponent(editionLabel)
-                            .addComponent(pubDateLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(addButtoN, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(headerLabel)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nOfBooksField, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                        .addComponent(pageCountField)
-                        .addComponent(pubDateField)
-                        .addComponent(editionField)
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bookGenreField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 93, Short.MAX_VALUE))
+                        .addGap(114, 114, 114)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idLabel)
+                            .addComponent(titleLabel)
+                            .addComponent(authorLabel)
+                            .addComponent(genreLabel)
+                            .addComponent(editionLabel)
+                            .addComponent(pageCountLabel)
+                            .addComponent(pubDateLabel)
+                            .addComponent(nOfBooksLabel))
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nOfBooksField)
+                            .addComponent(pubDateField)
+                            .addComponent(editionField)
+                            .addComponent(pageCountField)
+                            .addComponent(genreField)
+                            .addComponent(titleField)
+                            .addComponent(idField)
+                            .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headerLabel)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(idLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(titleLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(authorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(genreLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bookGenreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(titleLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(authorLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(bookGenreLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editionLabel)
                     .addComponent(editionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pageCountLabel)
                     .addComponent(pageCountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pubDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nOfBooksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(pubDateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nOfBooksLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pubDateLabel)
+                    .addComponent(pubDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nOfBooksLabel)
+                    .addComponent(nOfBooksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButtoN)
                     .addComponent(cancelButton))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(6, 6, 6))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addButtoNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtoNActionPerformed
       StringBuilder warnings; 
-      BookGenre genre = BookGenre.valueOf(bookGenreField.getText());
+      BookGenre genre = BookGenre.valueOf(genreField.getText());
       warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
-              pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText(), genre); 
+              pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText(), genre, editionField.getText()); 
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){
         addDetailsOfBook();       
         boolean checkSuccess = false;   
         
-        if(retObj.addBook(book)){
-            JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");
-            this.dispose();
+      if(retObj.addBook(book)){
+          JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");
+          this.dispose();
         }
-        else {
-            JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+      else {
+         JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",                    JOptionPane.ERROR_MESSAGE);
         }
         
       }
       else{
           JOptionPane.showMessageDialog(this, warnings, "Warnings!", JOptionPane.WARNING_MESSAGE);
       }
-    }//GEN-LAST:event_addButtonActionPerformed
+    }//GEN-LAST:event_addButtoNActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
     
     private void addDetailsOfBook() {
-        BookGenre genre = BookGenre.valueOf(bookGenreField.getText());
+        BookGenre genre = BookGenre.valueOf(genreField.getText());
         
         book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
                 Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
-                Integer.parseInt(nOfBooksField.getText()), genre);
+                Integer.parseInt(nOfBooksField.getText()), genre,Integer.parseInt(editionField.getText()));
                 
     }
     
+    private void setFont() {
+
+      headerLabel.setFont(new Font("Serif", Font.BOLD, 20));
+      idLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      titleLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      authorLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      editionLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      pageCountLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      genreLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      pubDateLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      nOfBooksLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+    }
+    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButtoN;
     private javax.swing.JButton addButton;
+    private javax.swing.JButton addButton1;
+    private javax.swing.JButton addButton2;
+    private javax.swing.JButton addButton3;
+    private javax.swing.JButton addButton4;
+    private javax.swing.JButton addButton5;
     private javax.swing.JTextField authorField;
     private javax.swing.JLabel authorLabel;
-    private javax.swing.JTextField bookGenreField;
-    private javax.swing.JLabel bookGenreLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField editionField;
     private javax.swing.JLabel editionLabel;
-    private javax.swing.JMenuItem exitButton;
-    private javax.swing.JMenu fileMenuButton;
+    private javax.swing.JTextField genreField;
+    private javax.swing.JLabel genreLabel;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField nOfBooksField;
     private javax.swing.JLabel nOfBooksLabel;
     private javax.swing.JTextField pageCountField;
@@ -259,6 +260,4 @@ public class AddBookPage extends javax.swing.JDialog {
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-  
-   
 }
