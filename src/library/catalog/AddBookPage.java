@@ -43,6 +43,8 @@ public class AddBookPage extends javax.swing.JDialog {
         titleField = new javax.swing.JTextField();
         authorLabel = new javax.swing.JLabel();
         authorField = new javax.swing.JTextField();
+        bookGenreLabel = new javax.swing.JLabel();
+        bookGenreField = new javax.swing.JTextField();
         pageCountLabel = new javax.swing.JLabel();
         pageCountField = new javax.swing.JTextField();
         pubDateLabel = new javax.swing.JLabel();
@@ -57,7 +59,7 @@ public class AddBookPage extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 400));
-        getContentPane().setLayout(new java.awt.GridLayout(7, 2, 20, 20));
+        getContentPane().setLayout(new java.awt.GridLayout(8, 2, 20, 20));
 
         idLabel.setText("Library ID:");
         getContentPane().add(idLabel);
@@ -70,6 +72,10 @@ public class AddBookPage extends javax.swing.JDialog {
         authorLabel.setText("Author:");
         getContentPane().add(authorLabel);
         getContentPane().add(authorField);
+
+        bookGenreLabel.setText("Book genre:");
+        getContentPane().add(bookGenreLabel);
+        getContentPane().add(bookGenreField);
 
         pageCountLabel.setText("Page Count:");
         getContentPane().add(pageCountLabel);
@@ -142,18 +148,20 @@ public class AddBookPage extends javax.swing.JDialog {
     }//GEN-LAST:event_addButtonActionPerformed
     
     private void addDetailsOfBook() {
+        BookGenre genre = BookGenre.valueOf(bookGenreField.getText());
         
         book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
                 Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
-                Integer.parseInt(nOfBooksField.getText()));
-        
-        
+                Integer.parseInt(nOfBooksField.getText()), genre);
+                
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JTextField authorField;
     private javax.swing.JLabel authorLabel;
+    private javax.swing.JTextField bookGenreField;
+    private javax.swing.JLabel bookGenreLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JMenuItem exitButton;
     private javax.swing.JMenu fileMenuButton;

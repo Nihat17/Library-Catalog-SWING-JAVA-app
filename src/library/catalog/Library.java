@@ -78,6 +78,6 @@ public abstract class Library {
    }
    
    public abstract StringBuilder checkForTypo(String id, String title, String author,
-           String pageCount, String publicationDate, String numberOfBooks);
+           String pageCount, String publicationDate, String numberOfBooks, Enum genre);
          
 }

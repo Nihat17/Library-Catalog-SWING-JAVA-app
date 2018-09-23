@@ -34,7 +34,7 @@ public class Book extends Library{
    }
 
     @Override
-    public StringBuilder checkForTypo(String id, String title, String author, String pageCount, String publicationDate, String numberOfBooks) {
+    public StringBuilder checkForTypo(String id, String title, String author, String pageCount, String publicationDate, String numberOfBooks,Enum genre) {
         StringBuilder warnings = new StringBuilder();
         if(!LambdaFunc.CFT_INT.test(id))
             warnings.append("Please use just digits for ID.\n");            
@@ -53,7 +53,7 @@ public class Book extends Library{
         
         if(!LambdaFunc.CFT_INT.test(numberOfBooks))
             warnings.append("Please use numbers for number of books field. \n");
-        
+                
         return warnings;
     }       
   
