@@ -193,7 +193,7 @@ public class DBService {
             addBookStatement.setString(5, book.getPublicationDate());
             addBookStatement.setInt(6, book.getNumberOfBooks());
             addBookStatement.setString(7, book.getBookGenre());
-            addBookStatement.setInt(successForAddBook, successForAddBook);
+            addBookStatement.setInt(8, book.getEdition());
             successForAddBook = addBookStatement.executeUpdate();
             
             connect.close();

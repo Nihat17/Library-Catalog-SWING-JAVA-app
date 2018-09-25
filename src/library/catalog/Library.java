@@ -44,8 +44,8 @@ public abstract class Library {
         return genre;
     }
 
-    public String getEdition() {
-        return String.valueOf(edition);
+    public int getEdition() {
+        return edition;
     }
     
     public int getBookID() {

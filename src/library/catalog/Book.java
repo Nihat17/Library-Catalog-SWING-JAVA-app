@@ -50,8 +50,8 @@ public class Book extends Library{
         if(!LambdaFunc.CFT_INT.test(pageCount))
             warnings.append("Please use letters for page count.\n");
         
-        if(!LambdaFunc.CFT_DATE.test(publicationDate))
-            warnings.append("Please use dd-MM-yyyy format for publication date.\n");
+        if(!LambdaFunc.CFT_INT.test(publicationDate))
+            warnings.append("Please use yyyy format for publication date.\n");
         
         if(!LambdaFunc.CFT_INT.test(numberOfBooks))
             warnings.append("Please use numbers for number of books field. \n");
