@@ -5,6 +5,8 @@
  */
 package library.catalog;
 
+import java.util.Random;
+
 
 public class Book extends Library{
    private String ISBN;   
@@ -78,8 +80,15 @@ public class Book extends Library{
       return check;
     }
   
-    public void generateISBN(int numberOfBooks){
+    public String setISBN(int numberOfBooks, int edition){
+        Random rn = new Random();
+        String ISBN = "978-83-95055";  
+        int [] randomAdd = new int[3];
+        for(int i = 0; i < 3; i++){
+            randomAdd[i] = rn.nextInt();
+            ISBN.concat(String.valueOf(randomAdd[i]));
+        }
         
+        return ISBN;
     }
-   
 }
