@@ -176,8 +176,9 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
     
-   boolean addBook(Book book){
+   boolean addBook(Book book, String []ISBN){
        int successForAddBook = -1;
+       boolean checkSuccessISBN = true;
        try {
             Connection connect = connect();
             String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
@@ -196,10 +197,27 @@ public class DBService {
             addBookStatement.setInt(8, book.getEdition());
             successForAddBook = addBookStatement.executeUpdate();
             
+            String addISBNsql = "INSERT INTO Books(ISBN, LibraryID) VALUES(?, ?)";
+            int[] addISBNSuccess = new int[ISBN.length];
+            for(int i = 0; i < ISBN.length; i++){
+               PreparedStatement addISBNstatement = connect.prepareStatement
+                   (addISBNsql, Statement.RETURN_GENERATED_KEYS);
+               addISBNstatement.setString(1, ISBN[i]);
+               addISBNstatement.setInt(2, book.getBookID());
+               addISBNSuccess[i] = addISBNstatement.executeUpdate();
+            }
+            
+           
+            for(int i = 0; i < addISBNSuccess.length; i++)
+                if(addISBNSuccess[i] == 0){
+                    checkSuccessISBN = false;
+                    break;
+                }
+                
             connect.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return (successForAddBook > -1);
+       return (successForAddBook > -1 && checkSuccessISBN == true);
    } 
 }

@@ -219,14 +219,14 @@ public class AddBookPage extends javax.swing.JFrame {
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){
         addDetailsOfBook();       
         boolean checkSuccess = false;   
-        
-      if(retObj.addBook(book)){
+        String[] ISBN = book.setISBN(Integer.parseInt(nOfBooksField.getText()));
+        if(retObj.addBook(book, ISBN)){
           
-          JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          
-          this.dispose();
+             JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          
+             this.dispose();
         }
-      else {
-         JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",                    JOptionPane.ERROR_MESSAGE);
+        else {
+             JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",                    JOptionPane.ERROR_MESSAGE);
         }
         
       }
