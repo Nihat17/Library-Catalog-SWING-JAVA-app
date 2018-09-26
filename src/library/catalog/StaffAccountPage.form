@@ -27,34 +27,37 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="firstNameField" min="-2" pref="77" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                      <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="numberLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="numberField" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="staffAccountLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="idLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="firstNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="idLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="firstNameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="idField" min="-2" pref="77" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="firstNameField" min="-2" pref="80" max="-2" attributes="0"/>
                                   <Component id="lastNameField" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Component id="idField" min="-2" pref="141" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="numberLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
-                      <Component id="numberField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="staffAccountLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -64,33 +67,30 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="staffAccountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="staffAccountLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="idLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="idField" min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="idField" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
-                          <Component id="idLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="firstNameField" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
-                          <Component id="firstNameLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="lastNameLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="lastNameField" min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="firstNameField" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="firstNameLabel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lastNameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lastNameField" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="numberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="numberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberField" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -136,9 +136,6 @@
     <Component class="javax.swing.JLabel" name="lastNameField">
     </Component>
     <Component class="javax.swing.JLabel" name="numberField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Phone Number:"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

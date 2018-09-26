@@ -80,15 +80,19 @@ public class Book extends Library{
       return check;
     }
   
-    public String setISBN(int numberOfBooks, int edition){
+    public String[] setISBN(int numberOfBooks, int edition){
         Random rn = new Random();
-        String ISBN = "978-83-95055";  
-        int [] randomAdd = new int[3];
-        for(int i = 0; i < 3; i++){
-            randomAdd[i] = rn.nextInt();
-            ISBN.concat(String.valueOf(randomAdd[i]));
+        String ISBN = "978-83-95055"; 
+        String ISBNarray[] = new String[numberOfBooks];
+        for(int c = 0; c < numberOfBooks; c++){
+            int [] randomAdd = new int[3];
+            ISBN = "978-83-95055"; 
+            for(int i = 0; i < 3; i++){
+              randomAdd[i] = rn.nextInt();
+              ISBN.concat(String.valueOf(randomAdd[i]));
+            }
+            ISBNarray[c] = ISBN;
         }
-        
-        return ISBN;
+        return ISBNarray;
     }
 }

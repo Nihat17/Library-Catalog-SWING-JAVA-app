@@ -206,8 +206,8 @@ public class AddBookPage extends javax.swing.JFrame {
         
         book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
                 Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
-                Integer.parseInt(nOfBooksField.getText()), genre,Integer.parseInt(editionField.getText()));
-                
+                Integer.parseInt(nOfBooksField.getText()), genre,Integer.parseInt(editionField.getText()));            
+                        
     }
      
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -221,7 +221,8 @@ public class AddBookPage extends javax.swing.JFrame {
         boolean checkSuccess = false;   
         
       if(retObj.addBook(book)){
-          JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");
+          
+          JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          
           this.dispose();
         }
       else {
