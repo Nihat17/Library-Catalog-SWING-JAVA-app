@@ -175,15 +175,42 @@ public class DBService {
         }
         return(!"".equals(phoneNumber));
    }
-    
+   
+   boolean checkIfBookExist(String author, String title, String id){
+       int libraryID = Integer.parseInt(id);
+       try {
+           Connection connect = connect();
+           String checkExistSQL = "Select ID FROM Library WHERE ID = ? AND Title = ? AND Author = ?";
+           PreparedStatement checkExistPS = connect.prepareStatement(checkExistSQL,
+                   Statement.RETURN_GENERATED_KEYS);
+           checkExistPS.setInt(1, libraryID);
+           checkExistPS.setString(2, title);
+           checkExistPS.setString(3, author);
+           checkExistPS.executeQuery();
+           
+           libraryID = -1;
+           
+           ResultSet checkExistSet;           
+           checkExistSet = checkExistPS.getResultSet();
+           
+           if(checkExistSet.next()){
+              libraryID = checkExistSet.getInt("ID");
+           }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return (libraryID != -1);
+   }
+   
    boolean addBook(Book book, String ISBN){
        int successForAddBook = -1;
+       int addISBNSuccess = -1;
        boolean checkSuccessISBN = true;
        try {
             Connection connect = connect();
             String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
                     + "PublicationDate, bookGenre, Edition)"
-                    + " VALUES(?,?,?,?,?,?,?,?)";
+                    + " VALUES(?,?,?,?,?,?,?)";
             
             PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
                     Statement.RETURN_GENERATED_KEYS);
@@ -192,12 +219,18 @@ public class DBService {
             addBookStatement.setString(3, book.getAuthor());
             addBookStatement.setInt(4, book.getPageCount());
             addBookStatement.setString(5, book.getPublicationDate());
-           // addBookStatement.setInt(6, book.getNumberOfBooks());
-            addBookStatement.setString(7, book.getBookGenre());
-            addBookStatement.setInt(8, book.getEdition());
+            //addBookStatement.setInt(6, book.getNumberOfBooks());
+            addBookStatement.setString(6, book.getBookGenre());
+            addBookStatement.setInt(7, book.getEdition());
             successForAddBook = addBookStatement.executeUpdate();
             
+            
             String addISBNsql = "INSERT INTO Books(ISBN, LibraryID) VALUES(?, ?)";
+            PreparedStatement addISBNstatement = connect.prepareStatement
+                   (addISBNsql, Statement.RETURN_GENERATED_KEYS);
+               addISBNstatement.setString(1, ISBN);
+               addISBNstatement.setInt(2, book.getBookID());
+               addISBNSuccess = addISBNstatement.executeUpdate();
             /*int[] addISBNSuccess = new int[ISBN.length];
             for(int i = 0; i < ISBN.length; i++){
                PreparedStatement addISBNstatement = connect.prepareStatement
@@ -218,6 +251,6 @@ public class DBService {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return (successForAddBook > -1 && checkSuccessISBN == true);
+       return (successForAddBook > -1 && addISBNSuccess > -1);
    } 
 }
