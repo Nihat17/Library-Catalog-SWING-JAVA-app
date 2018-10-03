@@ -205,6 +205,7 @@ public class AddBookPage extends javax.swing.JFrame {
               pageCountField.getText(), pubDateField.getText(), genre, editionField.getText()); 
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){        
+        
         book.setNumberOfBooks(retObj.checkIfBookExist(titleField.getText(), 
                 authorField.getText(), idField.getText()));
         

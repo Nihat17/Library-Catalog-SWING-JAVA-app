@@ -176,9 +176,10 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
    
-   int checkIfBookExist(String author, String title, String id){
+   boolean checkIfBookExist(String author, String title, String id){
        int libraryID = Integer.parseInt(id);
-       int numberOfBooks = -1;
+       int numberOfBooks = 0;
+       int updateSuccess = 0;
        try {
            Connection connect = connect();
            String checkExistSQL = "Select numberOfBooks FROM Library WHERE ID = ? "
@@ -197,10 +198,12 @@ public class DBService {
            if(checkExistSet.next()){
               numberOfBooks = checkExistSet.getInt("NumberOfBooks");
            }
+           connect.close();
+           updateSuccess = updateBook(numberOfBooks);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return numberOfBooks;
+       return (numberOfBooks > 0 && updateSuccess > 0);
    }
    
    boolean addBook(Book book, String ISBN){
@@ -254,4 +257,26 @@ public class DBService {
         }
        return (successForAddBook > -1 && addISBNSuccess > -1);
    } 
+
+    private int updateBook(int numberOfBooks) {
+        int updateSuccess = -1;
+        try {
+            Connection connect = connect();
+            String updateSql = "UPDATE Library SET numberOfBooks = ?";
+            PreparedStatement updateStatement = connect.prepareStatement(updateSql,
+                    Statement.RETURN_GENERATED_KEYS);
+            
+            updateStatement.setInt(1, numberOfBooks);
+            ResultSet set = updateStatement.getResultSet();
+            
+            if(set.next()){
+                updateSuccess = 1;
+            }
+            
+            connect.close();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return updateSuccess;
+    }
 }
