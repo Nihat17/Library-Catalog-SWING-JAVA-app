@@ -29,7 +29,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="idLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
@@ -42,14 +42,13 @@
                                       <Component id="pageCountLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
                                       <Component id="pubDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nOfBooksLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="addButton" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -60,13 +59,12 @@
                           <Component id="editionField" alignment="0" max="32767" attributes="0"/>
                           <Component id="pageCountField" alignment="0" max="32767" attributes="0"/>
                           <Component id="pubDateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="nOfBooksField" alignment="0" max="32767" attributes="0"/>
                           <Component id="cancelButton" min="-2" pref="166" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="headerLabel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="151" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="145" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,24 +109,18 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="pubDateField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nOfBooksField" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="pubDateField" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="pubDateLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="nOfBooksLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -167,11 +159,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="genreField">
     </Component>
-    <Component class="javax.swing.JLabel" name="nOfBooksLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Number of books:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="pubDateLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Publication Date:"/>
@@ -182,8 +169,6 @@
     <Component class="javax.swing.JTextField" name="pageCountField">
     </Component>
     <Component class="javax.swing.JTextField" name="pubDateField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="nOfBooksField">
     </Component>
     <Component class="javax.swing.JLabel" name="editionLabel">
       <Properties>

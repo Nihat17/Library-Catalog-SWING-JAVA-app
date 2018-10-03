@@ -18,20 +18,18 @@ public abstract class Library {
    private String title;
    private String author;
    private int pageCount;
-   private String publicationDate;
-   private int numberOfBooks;
+   private String publicationDate;  
    private Enum bookGenre;
    private int edition;
    
    public Library(int bookID, String title, String author, int pageCount, 
-           String publicationDate, int numberOfBooks, Enum bookGenre, int edition){
+           String publicationDate, Enum bookGenre, int edition){
        
        this.bookID = bookID;
        this.author = author;
        this.title = title;
        this.pageCount = pageCount;
-       this.publicationDate = publicationDate;
-       this.numberOfBooks = numberOfBooks;
+       this.publicationDate = publicationDate;     
        this.bookGenre = bookGenre;
        this.edition = edition;
     } 
@@ -66,11 +64,7 @@ public abstract class Library {
 
     public String getPublicationDate() {
         return publicationDate;
-    }
-
-    public int getNumberOfBooks() {
-        return numberOfBooks;
-    }         
+    }        
        
    public static boolean checkForLength(StringBuilder warnings){      
        boolean output = true;
@@ -85,7 +79,7 @@ public abstract class Library {
    }
    
    public abstract StringBuilder checkForTypo(String id, String title, String author,
-           String pageCount, String publicationDate, String numberOfBooks, Enum genre, String edition);
+           String pageCount, String publicationDate, Enum genre, String edition);
    
    public abstract boolean checkIfGenreMatches(Enum type);
          

@@ -176,13 +176,13 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
     
-   boolean addBook(Book book, String []ISBN){
+   boolean addBook(Book book, String ISBN){
        int successForAddBook = -1;
        boolean checkSuccessISBN = true;
        try {
             Connection connect = connect();
             String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
-                    + "PublicationDate, NumberOfBooks, bookGenre, Edition)"
+                    + "PublicationDate, bookGenre, Edition)"
                     + " VALUES(?,?,?,?,?,?,?,?)";
             
             PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
@@ -192,13 +192,13 @@ public class DBService {
             addBookStatement.setString(3, book.getAuthor());
             addBookStatement.setInt(4, book.getPageCount());
             addBookStatement.setString(5, book.getPublicationDate());
-            addBookStatement.setInt(6, book.getNumberOfBooks());
+           // addBookStatement.setInt(6, book.getNumberOfBooks());
             addBookStatement.setString(7, book.getBookGenre());
             addBookStatement.setInt(8, book.getEdition());
             successForAddBook = addBookStatement.executeUpdate();
             
             String addISBNsql = "INSERT INTO Books(ISBN, LibraryID) VALUES(?, ?)";
-            int[] addISBNSuccess = new int[ISBN.length];
+            /*int[] addISBNSuccess = new int[ISBN.length];
             for(int i = 0; i < ISBN.length; i++){
                PreparedStatement addISBNstatement = connect.prepareStatement
                    (addISBNsql, Statement.RETURN_GENERATED_KEYS);
@@ -213,7 +213,7 @@ public class DBService {
                     checkSuccessISBN = false;
                     break;
                 }
-                
+             */   
             connect.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);

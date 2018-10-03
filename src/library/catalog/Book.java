@@ -14,9 +14,9 @@ public class Book extends Library{
    private String dueDate;
 
    public Book(int bookID, String title, String author, int pageCount, 
-           String publicationDate, int numberOfBooks, Enum bookGenre, int edition) {
+           String publicationDate, Enum bookGenre, int edition) {
        
-      super(bookID, title, author, pageCount, publicationDate, numberOfBooks, bookGenre, edition);
+      super(bookID, title, author, pageCount, publicationDate, bookGenre, edition);
    }
        
    public Book(){
@@ -24,7 +24,19 @@ public class Book extends Library{
    }
    
    public String getISBN() {
+      String ISBN = "978-83-95055";         
+      //for(int c = 0; c < numberOfBooks; c++){
+      Random rn = new Random();
+      int [] randomAdd = new int[3];
+      ISBN = "978-83-95055"; 
+      for(int i = 0; i < 3; i++){
+          randomAdd[i] = rn.nextInt(9) + 1;
+          ISBN += String.valueOf(randomAdd[i]);
+        }
+            
+        //}
        return ISBN;
+    
    }
 
    public Enum getStatus() {
@@ -37,7 +49,7 @@ public class Book extends Library{
 
     @Override
     public StringBuilder checkForTypo(String id, String title, String author,
-            String pageCount, String publicationDate, String numberOfBooks,Enum genre, String edition) {
+            String pageCount, String publicationDate, Enum genre, String edition) {
         
         StringBuilder warnings = new StringBuilder();
         if(!LambdaFunc.CFT_INT.test(id))
@@ -53,10 +65,7 @@ public class Book extends Library{
             warnings.append("Please use letters for page count.\n");
         
         if(!LambdaFunc.CFT_INT.test(publicationDate))
-            warnings.append("Please use yyyy format for publication date.\n");
-        
-        if(!LambdaFunc.CFT_INT.test(numberOfBooks))
-            warnings.append("Please use numbers for number of books field. \n");
+            warnings.append("Please use yyyy format for publication date.\n");                
         
         if(!checkIfGenreMatches(genre))        
             warnings.append("Please use one of following genres: Fiction,\n" +
@@ -80,11 +89,10 @@ public class Book extends Library{
       return check;
     }
   
-    public String[] setISBN(int numberOfBooks){
+    public String setISBN(){
         
-        String ISBN = "978-83-95055"; 
-        String ISBNarray[] = new String[numberOfBooks];
-        for(int c = 0; c < numberOfBooks; c++){
+        String ISBN = "978-83-95055";         
+        //for(int c = 0; c < numberOfBooks; c++){
             Random rn = new Random();
             int [] randomAdd = new int[3];
             ISBN = "978-83-95055"; 
@@ -92,8 +100,8 @@ public class Book extends Library{
               randomAdd[i] = rn.nextInt(9) + 1;
               ISBN += String.valueOf(randomAdd[i]);
             }
-            ISBNarray[c] = ISBN;
-        }
-        return ISBNarray;
+            
+        //}
+        return ISBN;
     }
 }

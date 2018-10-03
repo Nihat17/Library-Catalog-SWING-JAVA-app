@@ -49,7 +49,7 @@ public class Return {
         return(database.searchStaff(staff));
     }
     
-    public boolean addBook(Book book, String[] ISBN){
+    public boolean addBook(Book book, String ISBN){
         return(database.addBook(book, ISBN));
     }
     

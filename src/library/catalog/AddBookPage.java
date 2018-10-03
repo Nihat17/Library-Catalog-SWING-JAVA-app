@@ -37,8 +37,7 @@ public class AddBookPage extends javax.swing.JFrame {
       editionLabel.setFont(new Font("Serif", Font.ITALIC, 14));
       pageCountLabel.setFont(new Font("Serif", Font.ITALIC, 14));
       genreLabel.setFont(new Font("Serif", Font.ITALIC, 14));
-      pubDateLabel.setFont(new Font("Serif", Font.ITALIC, 14));
-      nOfBooksLabel.setFont(new Font("Serif", Font.ITALIC, 14));
+      pubDateLabel.setFont(new Font("Serif", Font.ITALIC, 14));     
    
     }
     /**
@@ -59,12 +58,10 @@ public class AddBookPage extends javax.swing.JFrame {
         titleField = new javax.swing.JTextField();
         authorField = new javax.swing.JTextField();
         genreField = new javax.swing.JTextField();
-        nOfBooksLabel = new javax.swing.JLabel();
         pubDateLabel = new javax.swing.JLabel();
         editionField = new javax.swing.JTextField();
         pageCountField = new javax.swing.JTextField();
         pubDateField = new javax.swing.JTextField();
-        nOfBooksField = new javax.swing.JTextField();
         editionLabel = new javax.swing.JLabel();
         pageCountLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
@@ -82,8 +79,6 @@ public class AddBookPage extends javax.swing.JFrame {
         genreLabel.setText("Genre:");
 
         authorLabel.setText("Author:");
-
-        nOfBooksLabel.setText("Number of books:");
 
         pubDateLabel.setText("Publication Date:");
 
@@ -125,12 +120,11 @@ public class AddBookPage extends javax.swing.JFrame {
                                         .addComponent(editionLabel)
                                         .addComponent(pageCountLabel)
                                         .addComponent(titleLabel)
-                                        .addComponent(pubDateLabel)
-                                        .addComponent(nOfBooksLabel))
-                                    .addGap(60, 60, 60)))
+                                        .addComponent(pubDateLabel))
+                                    .addGap(66, 66, 66)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)))
+                                .addGap(66, 66, 66)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(titleField, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(idField, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
@@ -139,10 +133,9 @@ public class AddBookPage extends javax.swing.JFrame {
                             .addComponent(editionField)
                             .addComponent(pageCountField)
                             .addComponent(pubDateField)
-                            .addComponent(nOfBooksField)
                             .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(headerLabel))
-                .addGap(0, 151, Short.MAX_VALUE))
+                .addGap(0, 145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,20 +171,15 @@ public class AddBookPage extends javax.swing.JFrame {
                     .addComponent(pageCountLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pubDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nOfBooksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pubDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(pubDateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nOfBooksLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(pubDateLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
                     .addComponent(cancelButton))
-                .addContainerGap())
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -206,7 +194,7 @@ public class AddBookPage extends javax.swing.JFrame {
         
         book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
                 Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
-                Integer.parseInt(nOfBooksField.getText()), genre,Integer.parseInt(editionField.getText()));            
+                 genre,Integer.parseInt(editionField.getText()));            
                         
     }
      
@@ -214,13 +202,14 @@ public class AddBookPage extends javax.swing.JFrame {
       StringBuilder warnings; 
       BookGenre genre = BookGenre.valueOf(genreField.getText());
       warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
-              pageCountField.getText(), pubDateField.getText(), nOfBooksField.getText(), genre, editionField.getText()); 
+              pageCountField.getText(), pubDateField.getText(), genre, editionField.getText()); 
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){
         addDetailsOfBook();       
-        boolean checkSuccess = false;   
-        String[] ISBN = book.setISBN(Integer.parseInt(nOfBooksField.getText()));
-        if(retObj.addBook(book, ISBN)){
+        boolean checkSuccess = false;
+        
+        //String[] ISBN = book.setISBN(Integer.parseInt(nOfBooksField.getText()));
+        if(retObj.addBook(book, book.getISBN())){
           
              JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          
              this.dispose();
@@ -283,8 +272,6 @@ public class AddBookPage extends javax.swing.JFrame {
     private javax.swing.JLabel headerLabel;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JTextField nOfBooksField;
-    private javax.swing.JLabel nOfBooksLabel;
     private javax.swing.JTextField pageCountField;
     private javax.swing.JLabel pageCountLabel;
     private javax.swing.JTextField pubDateField;
