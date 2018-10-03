@@ -53,7 +53,7 @@ public class Return {
         return(database.addBook(book, ISBN));
     }
     
-    public boolean checkIfBookExist(String title, String author, String id){
+    public int checkIfBookExist(String title, String author, String id){
         return(database.checkIfBookExist(author, title, id));
     }
     

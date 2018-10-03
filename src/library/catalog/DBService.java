@@ -176,7 +176,7 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
    
-   boolean checkIfBookExist(String author, String title, String id){
+   int checkIfBookExist(String author, String title, String id){
        int libraryID = Integer.parseInt(id);
        int numberOfBooks = -1;
        try {
@@ -200,7 +200,7 @@ public class DBService {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return (numberOfBooks > 0);
+       return numberOfBooks;
    }
    
    boolean addBook(Book book, String ISBN){
