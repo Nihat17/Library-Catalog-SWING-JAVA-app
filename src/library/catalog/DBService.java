@@ -178,28 +178,29 @@ public class DBService {
    
    boolean checkIfBookExist(String author, String title, String id){
        int libraryID = Integer.parseInt(id);
+       int numberOfBooks = -1;
        try {
            Connection connect = connect();
-           String checkExistSQL = "Select ID FROM Library WHERE ID = ? AND Title = ? AND Author = ?";
+           String checkExistSQL = "Select numberOfBooks FROM Library WHERE ID = ? "
+                   + "AND Title = ? AND Author = ?";
+           
            PreparedStatement checkExistPS = connect.prepareStatement(checkExistSQL,
                    Statement.RETURN_GENERATED_KEYS);
            checkExistPS.setInt(1, libraryID);
            checkExistPS.setString(2, title);
            checkExistPS.setString(3, author);
-           checkExistPS.executeQuery();
-           
-           libraryID = -1;
+           checkExistPS.executeQuery();                      
            
            ResultSet checkExistSet;           
            checkExistSet = checkExistPS.getResultSet();
            
            if(checkExistSet.next()){
-              libraryID = checkExistSet.getInt("ID");
+              numberOfBooks = checkExistSet.getInt("NumberOfBooks");
            }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return (libraryID != -1);
+       return (numberOfBooks > 0);
    }
    
    boolean addBook(Book book, String ISBN){
