@@ -206,23 +206,34 @@ public class AddBookPage extends javax.swing.JFrame {
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){        
         
-        book.setNumberOfBooks(retObj.checkIfBookExist(titleField.getText(), 
-                authorField.getText(), idField.getText()));
+        /*book.setNumberOfBooks(retObj.checkIfBookExist(titleField.getText(), 
+                authorField.getText(), idField.getText()));*/
+        int numberOfBooks = retObj.checkIfBookExist(titleField.getText(), authorField.getText(), 
+                idField.getText());
         
+        if(numberOfBooks > 0){
+           // Then it means we should update it for Library table
+           if(retObj.updateBook(numberOfBooks, titleField.getText()) > 0){
+               JOptionPane.showMessageDialog(this, "This book exist in our library.\n"
+                   + " Number of books was updated " + "Information" + JOptionPane.INFORMATION_MESSAGE);
+           }
+        }
         
-        addDetailsOfBook();       
-        boolean checkSuccess = false;
+        else{
+            //Means we should add that book to Library table in database                                    
+           addDetailsOfBook();       
+           boolean checkSuccess = false;
         
-        //String[] ISBN = book.setISBN(Integer.parseInt(nOfBooksField.getText()));
-        if(retObj.addBook(book, book.getISBN())){
+          //String[] ISBN = book.setISBN(Integer.parseInt(nOfBooksField.getText()));
+           if(retObj.addBook(book, book.getISBN())){
           
-             JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          
-             this.dispose();
+            JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          
+            this.dispose();
         }
-        else {
-             JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",                    JOptionPane.ERROR_MESSAGE);
-        }
-        
+            else {
+                 JOptionPane.showMessageDialog(this, "An error occured!\n Make sure id is unique", "Error",                    JOptionPane.ERROR_MESSAGE);
+            }
+       }
       }
       else{
           JOptionPane.showMessageDialog(this, warnings, "Warnings!", JOptionPane.WARNING_MESSAGE);

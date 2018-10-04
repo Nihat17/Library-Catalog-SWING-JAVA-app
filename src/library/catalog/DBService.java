@@ -176,10 +176,10 @@ public class DBService {
         return(!"".equals(phoneNumber));
    }
    
-   boolean checkIfBookExist(String author, String title, String id){
+   int checkIfBookExist(String author, String title, String id){
        int libraryID = Integer.parseInt(id);
        int numberOfBooks = 0;
-       int updateSuccess = 0;
+      
        try {
            Connection connect = connect();
            String checkExistSQL = "Select numberOfBooks FROM Library WHERE ID = ? "
@@ -199,11 +199,11 @@ public class DBService {
               numberOfBooks = checkExistSet.getInt("NumberOfBooks");
            }
            connect.close();
-           updateSuccess = updateBook(numberOfBooks);
+       
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return (numberOfBooks > 0 && updateSuccess > 0);
+       return numberOfBooks;
    }
    
    boolean addBook(Book book, String ISBN){
@@ -232,7 +232,7 @@ public class DBService {
             String addISBNsql = "INSERT INTO Books(ISBN, LibraryID) VALUES(?, ?)";
             PreparedStatement addISBNstatement = connect.prepareStatement
                    (addISBNsql, Statement.RETURN_GENERATED_KEYS);
-               addISBNstatement.setString(1, ISBN);
+               addISBNstatement.setString(1, book.getISBN());
                addISBNstatement.setInt(2, book.getBookID());
                addISBNSuccess = addISBNstatement.executeUpdate();
             /*int[] addISBNSuccess = new int[ISBN.length];
@@ -258,21 +258,22 @@ public class DBService {
        return (successForAddBook > -1 && addISBNSuccess > -1);
    } 
 
-    private int updateBook(int numberOfBooks) {
+    public int updateBook(int numberOfBooks, String title) {
         int updateSuccess = -1;
+        numberOfBooks++;
+        
         try {
             Connection connect = connect();
-            String updateSql = "UPDATE Library SET numberOfBooks = ?";
+            String updateSql = "UPDATE Library SET NumberOfBooks = ? WHERE Title = ?";            
             PreparedStatement updateStatement = connect.prepareStatement(updateSql,
                     Statement.RETURN_GENERATED_KEYS);
             
             updateStatement.setInt(1, numberOfBooks);
-            ResultSet set = updateStatement.getResultSet();
+            updateStatement.setString(2, title);
             
-            if(set.next()){
-                updateSuccess = 1;
-            }
-            
+            //updateStatement.executeUpdate();
+            updateSuccess = updateStatement.executeUpdate();
+                                                          
             connect.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
