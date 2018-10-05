@@ -240,7 +240,7 @@ public class DBService {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return (successForAddBook > -1 && addISBNSuccess > -1);
+       return (successForAddBook > -1);
    } 
 
     public int updateBook(int numberOfBooks, String title) {
@@ -263,5 +263,31 @@ public class DBService {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return updateSuccess;
+    }
+    
+    public int insertIntoBooks(Book book) throws SQLException{
+        int addISBNSuccess = -1;
+        try {
+            Connection connection = connect();
+            String addISBNsql = "INSERT INTO Books(ISBN, LibraryID, Status) VALUES(?,?,?)";
+            PreparedStatement addISBNstatement = connection.prepareStatement
+                   (addISBNsql, Statement.RETURN_GENERATED_KEYS);
+                        
+            addISBNstatement.setString(1, book.getISBN());
+            addISBNstatement.setInt(2, book.getBookID());
+            addISBNstatement.setString(3, String.valueOf(book.getStatus()));
+            addISBNSuccess = addISBNstatement.executeUpdate();      
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return addISBNSuccess;        
+    }
+    public void searchBook(String title, String author){
+        try {
+            Connection connection = connect();
+            String searchBookSQL = "";
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

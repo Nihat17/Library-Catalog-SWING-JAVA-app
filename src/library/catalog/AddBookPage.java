@@ -6,6 +6,9 @@
 package library.catalog;
 
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -212,7 +215,13 @@ public class AddBookPage extends javax.swing.JFrame {
         
         if(numberOfBooks > 0){
            // Then it means we should update it for Library table
+           addDetailsOfBook(); 
            if(retObj.updateBook(numberOfBooks, titleField.getText()) > 0){
+               try {
+                   retObj.insertIntoBooks(book);
+               } catch (SQLException ex) {
+                   Logger.getLogger(AddBookPage.class.getName()).log(Level.SEVERE, null, ex);
+               }
                JOptionPane.showMessageDialog(this, "This book exist in our library.\n"
                    + " Number of books was updated ", "Information", JOptionPane.INFORMATION_MESSAGE);
            }

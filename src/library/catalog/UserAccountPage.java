@@ -8,6 +8,7 @@ package library.catalog;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,7 +54,7 @@ public class UserAccountPage extends javax.swing.JFrame {
         scrollPane = new javax.swing.JScrollPane();
         bookDetailsTable = new javax.swing.JTable();
         titleField = new javax.swing.JTextField();
-        authorTitle = new javax.swing.JTextField();
+        authorField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         authorLabel = new javax.swing.JLabel();
@@ -97,6 +98,11 @@ public class UserAccountPage extends javax.swing.JFrame {
         scrollPane.setViewportView(bookDetailsTable);
 
         searchButton.setText("Search!");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         titleLabel.setText("Title");
 
@@ -124,7 +130,7 @@ public class UserAccountPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(authorLabel)
                 .addGap(9, 9, 9)
-                .addComponent(authorTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -153,7 +159,7 @@ public class UserAccountPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LAtextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(authorTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton)
                     .addComponent(titleLabel)
                     .addComponent(authorLabel))
@@ -183,13 +189,28 @@ public class UserAccountPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+       SearchResult menu;
+        if(!titleField.getText().isEmpty() && !authorField.getText().isEmpty()){
+            menu = new SearchResult(this, false, titleField.getText(), 
+                   authorField.getText());
+            menu.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please fill in title and author fields properly!",
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        }
+       
+       
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LAtextField;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JTextField authorField;
     private javax.swing.JLabel authorLabel;
-    private javax.swing.JTextField authorTitle;
     private javax.swing.JTable bookDetailsTable;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;

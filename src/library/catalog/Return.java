@@ -5,6 +5,8 @@
  */
 package library.catalog;
 
+import java.sql.SQLException;
+
 
 public class Return {
     User user = new User();
@@ -59,5 +61,11 @@ public class Return {
     public int updateBook(int numberOfBooks, String title){
         return(database.updateBook(numberOfBooks, title));
     }
+    
+    public int insertIntoBooks(Book book) throws SQLException{
+        return(database.insertIntoBooks(book));
+    }
+    
+    
     
 }
