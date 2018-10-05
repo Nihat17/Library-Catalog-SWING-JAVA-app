@@ -137,7 +137,7 @@ public class DBService {
                user.setPhoneNumber(phoneNumber);
            }
            //If the user exists in database then output will be its ID 
-           // Else ouput will stay as -1
+           // Else output will stay as -1
            
         } catch (SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
@@ -222,35 +222,17 @@ public class DBService {
             addBookStatement.setString(2, book.getTitle());
             addBookStatement.setString(3, book.getAuthor());
             addBookStatement.setInt(4, book.getPageCount());
-            addBookStatement.setString(5, book.getPublicationDate());
-            //addBookStatement.setInt(6, book.getNumberOfBooks());
+            addBookStatement.setString(5, book.getPublicationDate());            
             addBookStatement.setString(6, book.getBookGenre());
             addBookStatement.setInt(7, book.getEdition());
             successForAddBook = addBookStatement.executeUpdate();
-            
-            
+                        
             String addISBNsql = "INSERT INTO Books(ISBN, LibraryID) VALUES(?, ?)";
             PreparedStatement addISBNstatement = connect.prepareStatement
                    (addISBNsql, Statement.RETURN_GENERATED_KEYS);
-               addISBNstatement.setString(1, book.getISBN());
+               addISBNstatement.setInt(1, Integer.parseInt(book.getISBN()));
                addISBNstatement.setInt(2, book.getBookID());
-               addISBNSuccess = addISBNstatement.executeUpdate();
-            /*int[] addISBNSuccess = new int[ISBN.length];
-            for(int i = 0; i < ISBN.length; i++){
-               PreparedStatement addISBNstatement = connect.prepareStatement
-                   (addISBNsql, Statement.RETURN_GENERATED_KEYS);
-               addISBNstatement.setString(1, ISBN[i]);
-               addISBNstatement.setInt(2, book.getBookID());
-               addISBNSuccess[i] = addISBNstatement.executeUpdate();
-            }
-            
-           
-            for(int i = 0; i < addISBNSuccess.length; i++)
-                if(addISBNSuccess[i] == 0){
-                    checkSuccessISBN = false;
-                    break;
-                }
-             */   
+               addISBNSuccess = addISBNstatement.executeUpdate();           
             connect.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
@@ -270,8 +252,7 @@ public class DBService {
             
             updateStatement.setInt(1, numberOfBooks);
             updateStatement.setString(2, title);
-            
-            //updateStatement.executeUpdate();
+                        
             updateSuccess = updateStatement.executeUpdate();
                                                           
             connect.close();

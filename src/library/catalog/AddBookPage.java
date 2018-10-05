@@ -205,9 +205,7 @@ public class AddBookPage extends javax.swing.JFrame {
               pageCountField.getText(), pubDateField.getText(), genre, editionField.getText()); 
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){        
-        
-        /*book.setNumberOfBooks(retObj.checkIfBookExist(titleField.getText(), 
-                authorField.getText(), idField.getText()));*/
+               
         int numberOfBooks = retObj.checkIfBookExist(titleField.getText(), authorField.getText(), 
                 idField.getText());
         
@@ -215,7 +213,7 @@ public class AddBookPage extends javax.swing.JFrame {
            // Then it means we should update it for Library table
            if(retObj.updateBook(numberOfBooks, titleField.getText()) > 0){
                JOptionPane.showMessageDialog(this, "This book exist in our library.\n"
-                   + " Number of books was updated " + "Information" + JOptionPane.INFORMATION_MESSAGE);
+                   + " Number of books was updated ", "Information", JOptionPane.INFORMATION_MESSAGE);
            }
         }
         
