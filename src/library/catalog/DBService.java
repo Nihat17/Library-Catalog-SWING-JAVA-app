@@ -285,8 +285,24 @@ public class DBService {
     public void searchBook(String title, String author){
         try {
             Connection connection = connect();
-            String searchBookSQL = "";
-        } catch (ClassNotFoundException ex) {
+            String searchBookSQL = "SELECT ISBN, Title, Author, bookGenre, Status,"
+                    + "DueDate FROM Library INNER JOIN Books ON Library.ID = "
+                    + "Books.LibraryID WHERE Library.Title = ? AND Library.Author = ?";
+            
+            PreparedStatement searchBookStatement = connection.prepareStatement(searchBookSQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            searchBookStatement.setString(1, title);
+            searchBookStatement.setString(2, author);
+            searchBookStatement.executeQuery();                      
+           
+           ResultSet searchSet;           
+           searchSet = searchBookStatement.getResultSet();
+           
+           if(searchSet.next()){
+              //Getting back the data 
+           }
+           connection.close();
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
