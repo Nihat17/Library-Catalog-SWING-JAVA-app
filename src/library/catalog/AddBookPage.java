@@ -204,9 +204,9 @@ public class AddBookPage extends javax.swing.JFrame {
      
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
       StringBuilder warnings; 
-      BookGenre genre = BookGenre.valueOf(genreField.getText());
+      //BookGenre genre = BookGenre.valueOf(genreField.getText());
       warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
-              pageCountField.getText(), pubDateField.getText(), genre, editionField.getText()); 
+              pageCountField.getText(), pubDateField.getText(), genreField.getText(), editionField.getText()); 
        
       if(LambdaFunc.CHECK_LENGTH.apply(warnings)){        
                
@@ -231,8 +231,7 @@ public class AddBookPage extends javax.swing.JFrame {
             //Means we should add that book to Library table in database                                    
            addDetailsOfBook();       
            boolean checkSuccess = false;
-        
-          //String[] ISBN = book.setISBN(Integer.parseInt(nOfBooksField.getText()));
+                  
            if(retObj.addBook(book, book.getISBN())){
           
             JOptionPane.showMessageDialog(this, book.getTitle() + " has been successfully added.");          

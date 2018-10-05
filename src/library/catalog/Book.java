@@ -5,6 +5,7 @@
  */
 package library.catalog;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -51,7 +52,7 @@ public class Book extends Library{
 
     @Override
     public StringBuilder checkForTypo(String id, String title, String author,
-            String pageCount, String publicationDate, Enum genre, String edition) {
+            String pageCount, String publicationDate, String genre, String edition) {
         
         StringBuilder warnings = new StringBuilder();
         if(!LambdaFunc.CFT_INT.test(id))
@@ -80,10 +81,17 @@ public class Book extends Library{
     }   
 
     @Override
-    public boolean checkIfGenreMatches(Enum type){
+    public boolean checkIfGenreMatches(String type){
       boolean check = false;
-      for(BookGenre genre : BookGenre.values()) {           
-          if(genre.equals(type)){
+      ArrayList<String> listOfGenres = new ArrayList<String>();
+      listOfGenres.add("Undefined");
+      listOfGenres.add("Fiction");
+      listOfGenres.add("Drama");
+      listOfGenres.add("Adventure");
+      listOfGenres.add("Satire");
+      listOfGenres.add("Horror");
+      for(int i = 0; i < listOfGenres.size(); i++) {           
+          if(listOfGenres.get(i).equals(type)){
               check = true;
               break;
           }

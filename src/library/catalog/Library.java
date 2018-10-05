@@ -88,8 +88,8 @@ public abstract class Library {
    }
    
    public abstract StringBuilder checkForTypo(String id, String title, String author,
-           String pageCount, String publicationDate, Enum genre, String edition);
+           String pageCount, String publicationDate, String genre, String edition);
    
-   public abstract boolean checkIfGenreMatches(Enum type);
+   public abstract boolean checkIfGenreMatches(String type);
          
 }
