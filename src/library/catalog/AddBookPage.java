@@ -194,7 +194,8 @@ public class AddBookPage extends javax.swing.JFrame {
         
         book = new Book(Integer.parseInt(idField.getText()), titleField.getText(), authorField.getText(),
                 Integer.parseInt(pageCountField.getText()), pubDateField.getText(),
-                 genre,Integer.parseInt(editionField.getText()));            
+                 genre,Integer.parseInt(editionField.getText()));    
+        book.setStatus(StatusType.available);
                         
     }
      

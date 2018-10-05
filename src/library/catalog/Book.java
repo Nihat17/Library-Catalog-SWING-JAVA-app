@@ -24,20 +24,22 @@ public class Book extends Library{
    }
    
    public String getISBN() {
-      String ISBN = "978-83-95055";         
-      //for(int c = 0; c < numberOfBooks; c++){
+      String ISBN = "9788395055";               
       Random rn = new Random();
       int [] randomAdd = new int[3];
-      ISBN = "978-83-95055"; 
+      ISBN = "9788395055"; 
       for(int i = 0; i < 3; i++){
           randomAdd[i] = rn.nextInt(9) + 1;
           ISBN += String.valueOf(randomAdd[i]);
         }
-            
-        //}
+                  
        return ISBN;
     
    }
+
+    public void setStatus(Enum status) {
+        this.status = status;
+    }
 
    public Enum getStatus() {
        return status;
@@ -91,17 +93,14 @@ public class Book extends Library{
   
     public String setISBN(){
         
-        String ISBN = "9788395055";         
-        //for(int c = 0; c < numberOfBooks; c++){
+        String ISBN = "9788395055";                 
             Random rn = new Random();
             int [] randomAdd = new int[3];
             ISBN = "9788395055"; 
             for(int i = 0; i < 3; i++){
               randomAdd[i] = rn.nextInt(9) + 1;
               ISBN += String.valueOf(randomAdd[i]);
-            }
-            
-        //}
+            }                   
         return ISBN;
     }
 }

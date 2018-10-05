@@ -213,8 +213,8 @@ public class DBService {
        try {
             Connection connect = connect();
             String addBookSQL = "INSERT INTO Library(ID, Title, Author, PageCount, "
-                    + "PublicationDate, bookGenre, Edition)"
-                    + " VALUES(?,?,?,?,?,?,?)";
+                    + "PublicationDate, bookGenre, Edition, NumberOfBooks)"
+                    + " VALUES(?,?,?,?,?,?,?,?)";
             
             PreparedStatement addBookStatement = connect.prepareStatement(addBookSQL,
                     Statement.RETURN_GENERATED_KEYS);
@@ -225,13 +225,16 @@ public class DBService {
             addBookStatement.setString(5, book.getPublicationDate());            
             addBookStatement.setString(6, book.getBookGenre());
             addBookStatement.setInt(7, book.getEdition());
+            addBookStatement.setInt(8,1);
             successForAddBook = addBookStatement.executeUpdate();
                         
-            String addISBNsql = "INSERT INTO Books(ISBN, LibraryID) VALUES(?, ?)";
+            String addISBNsql = "INSERT INTO Books(ISBN, LibraryID, Status) VALUES(?,?,?)";
             PreparedStatement addISBNstatement = connect.prepareStatement
                    (addISBNsql, Statement.RETURN_GENERATED_KEYS);
-               addISBNstatement.setInt(1, Integer.parseInt(book.getISBN()));
+                        
+               addISBNstatement.setString(1, book.getISBN());
                addISBNstatement.setInt(2, book.getBookID());
+               addISBNstatement.setString(3, String.valueOf(book.getStatus()));
                addISBNSuccess = addISBNstatement.executeUpdate();           
             connect.close();
         } catch (ClassNotFoundException | SQLException ex) {
