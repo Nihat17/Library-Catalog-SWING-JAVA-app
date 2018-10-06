@@ -2,7 +2,9 @@ package library.catalog;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,11 +22,13 @@ public class StaffAccountPage extends javax.swing.JFrame {
      * Creates new form StaffAccountPage
      */    
     Staff staff;
+    Return retObj = new Return();
     public StaffAccountPage(Staff staff) {
         initComponents();
         this.staff = staff;
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);        
         setFont();
+        getAndSetBookList();
         fillStaffDetails();        
     } 
 
@@ -161,7 +165,20 @@ public class StaffAccountPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void getAndSetBookList() throws ClassNotFoundException {
+       List listOfBooks = retObj.selectBooks();
+       List<Object> listBook;
+       DefaultTableModel model = (DefaultTableModel) listOfBooksTable.getModel();
+       
+       for(int i = 0; i < listOfBooks.size(); i++){
+           listBook = (List<Object>) listOfBooks.get(i);
+           model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
+             listBook.get(3), listBook.get(4)});
+           
+       }
+    }
+     
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
         AddBookPage menu = new AddBookPage();
         menu.setVisible(true);
@@ -203,5 +220,6 @@ public class StaffAccountPage extends javax.swing.JFrame {
     private javax.swing.JLabel numberLabel;
     private javax.swing.JLabel staffAccountLabel;
     // End of variables declaration//GEN-END:variables
+  
       
 }

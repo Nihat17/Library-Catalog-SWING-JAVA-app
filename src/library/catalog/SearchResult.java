@@ -38,7 +38,7 @@ public class SearchResult extends javax.swing.JDialog {
        
        for(int i = 0; i < listOfResults.size(); i++){
            listBook = (List<String>) listOfResults.get(i);
-             model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
+           model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
                listBook.get(3), listBook.get(4), listBook.get(5)});                                 
        }
     }
