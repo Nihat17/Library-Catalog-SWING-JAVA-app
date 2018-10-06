@@ -328,7 +328,8 @@ public class DBService {
         List listOfLists = new ArrayList<>();
         
         Connection connection = connect();
-        String selectBookSQL = "SELECT ID, Title, Author, bookGenre, NumberOfBooks FROM Library";
+        String selectBookSQL = "SELECT ID, Title, Author, bookGenre, Status, "
+            + "UserID, DueDate FROM Library INNER JOIN Books ON Library.ID = Books.LibraryID;";
         
         try {
             PreparedStatement stat = connection.prepareStatement(selectBookSQL,
@@ -341,8 +342,9 @@ public class DBService {
                listOfResult.add(selectBooksResult.getString("Title"));
                listOfResult.add(selectBooksResult.getString("Author"));
                listOfResult.add(selectBooksResult.getString("bookGenre"));
-               listOfResult.add(selectBooksResult.getInt("NumberOfBooks"));
-               
+               listOfResult.add(selectBooksResult.getString("Status"));
+               listOfResult.add(selectBooksResult.getInt("UserID"));
+               listOfResult.add(selectBooksResult.getString("DueDate"));
                listOfLists.add(listOfResult);
             }
         } catch (SQLException ex) {

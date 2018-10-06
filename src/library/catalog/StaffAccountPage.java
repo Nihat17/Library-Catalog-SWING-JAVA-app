@@ -23,7 +23,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
      */    
     Staff staff;
     Return retObj = new Return();
-    public StaffAccountPage(Staff staff) {
+    public StaffAccountPage(Staff staff) throws ClassNotFoundException {
         initComponents();
         this.staff = staff;
         setLocationRelativeTo(null);        
@@ -52,7 +52,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
         lastNameField = new javax.swing.JLabel();
         numberField = new javax.swing.JLabel();
         headerForList = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         listOfBooksTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,24 +78,21 @@ public class StaffAccountPage extends javax.swing.JFrame {
 
         listOfBooksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Library ID", "Title", "Author", "Genre", "Number of Books"
+                "Library ID", "Title", "Author", "Genre", "Availability", "Taken by", "DueDate"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(listOfBooksTable);
+        jScrollPane1.setViewportView(listOfBooksTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,32 +102,31 @@ public class StaffAccountPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(numberLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(numberField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(idLabel)
-                                            .addComponent(lastNameLabel))
-                                        .addGap(1, 1, 1))
-                                    .addComponent(firstNameLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(staffAccountLabel)
-                            .addComponent(addBookButton))
-                        .addGap(3, 3, 3)
+                                    .addComponent(idLabel)
+                                    .addComponent(lastNameLabel))
+                                .addGap(1, 1, 1))
+                            .addComponent(firstNameLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(headerForList))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(addBookButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numberLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(numberField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(staffAccountLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(headerForList)
+                        .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,9 +135,9 @@ public class StaffAccountPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(staffAccountLabel)
                     .addComponent(headerForList))
-                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idLabel)
                             .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,8 +155,10 @@ public class StaffAccountPage extends javax.swing.JFrame {
                             .addComponent(numberLabel))
                         .addGap(38, 38, 38)
                         .addComponent(addBookButton))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,8 +172,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
        for(int i = 0; i < listOfBooks.size(); i++){
            listBook = (List<Object>) listOfBooks.get(i);
            model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
-             listBook.get(3), listBook.get(4)});
-           
+             listBook.get(3), listBook.get(4), listBook.get(5), listBook.get(6)});           
        }
     }
      
@@ -192,9 +189,12 @@ public class StaffAccountPage extends javax.swing.JFrame {
     }
    
     private void setFont() {  
-      // JScrollPane scrollPane = new JScrollPane(listOfBooksTable); 
+               
+       jScrollPane1.getViewport().add(listOfBooksTable);
        staffAccountLabel.setFont(new Font("Serif", Font.ROMAN_BASELINE, 23));
        staffAccountLabel.setForeground(Color.red);
+       headerForList.setFont(new Font("Serif", Font.ITALIC, 18));
+       headerForList.setForeground(Color.blue);
        idLabel.setFont(new Font("Serif", Font.ITALIC, 16));
        firstNameLabel.setFont(new Font("Serif", Font.ITALIC, 16));
        lastNameLabel.setFont(new Font("Serif", Font.ITALIC, 16));
@@ -212,7 +212,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
     private javax.swing.JLabel headerForList;
     private javax.swing.JLabel idField;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lastNameField;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTable listOfBooksTable;
