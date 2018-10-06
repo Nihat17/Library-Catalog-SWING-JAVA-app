@@ -5,15 +5,20 @@
  */
 package library.catalog;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author marshall
  */
 public class SearchResult extends javax.swing.JDialog {
-
+    
     /**
      * Creates new form SearchResult
      */
+    Return retObj = new Return();    
     public SearchResult(java.awt.Frame parent, boolean modal, String title, String author) {
         super(parent, modal);
         setLocationRelativeTo(parent);        
@@ -22,8 +27,22 @@ public class SearchResult extends javax.swing.JDialog {
     }
 
     private void searchBook(String title, String author) {
-      
+       List<ArrayList> listOfResults = new ArrayList<>();
+       listOfResults = retObj.searchBook(title, author);
+       addInfoToList(listOfResults);
     }
+    
+    private void addInfoToList(List listOfResults) {
+       DefaultTableModel model = (DefaultTableModel) bookDetTable.getModel();              
+       List<String> listBook;
+       
+       for(int i = 0; i < listOfResults.size(); i++){
+           listBook = (List<String>) listOfResults.get(i);
+             model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
+               listBook.get(3), listBook.get(4), listBook.get(5)});                                 
+       }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,18 +53,15 @@ public class SearchResult extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        bookDetails = new javax.swing.JTable();
+        bookDetTable = new javax.swing.JTable();
         getButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        bookDetails.setModel(new javax.swing.table.DefaultTableModel(
+        bookDetTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ISBN", "Title", "Author", "Genre", "Availability", "Due Date"
@@ -59,11 +75,16 @@ public class SearchResult extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(bookDetails);
+        jScrollPane2.setViewportView(bookDetTable);
 
         getButton.setText("Get the book!");
 
         cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,12 +115,17 @@ public class SearchResult extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable bookDetails;
+    private javax.swing.JTable bookDetTable;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton getButton;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
    
 }

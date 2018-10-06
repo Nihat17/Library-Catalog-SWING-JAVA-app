@@ -6,6 +6,7 @@
 package library.catalog;
 
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class Return {
@@ -66,6 +67,11 @@ public class Return {
         return(database.insertIntoBooks(book));
     }
     
-    
+    public List searchBook(String title, String author){
+        return (database.searchBook(title, author));
+    }
+    public List selectBooks() throws ClassNotFoundException{
+        return(database.selectBooks());
+    }
     
 }

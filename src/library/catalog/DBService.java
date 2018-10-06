@@ -3,11 +3,14 @@ package library.catalog;
 
 import library.catalog.User;
 import com.mysql.jdbc.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -282,7 +285,10 @@ public class DBService {
         }
         return addISBNSuccess;        
     }
-    public void searchBook(String title, String author){
+    
+    public List searchBook(String title, String author){
+        List <String> searchResults;
+        List <ArrayList> listOfSearchResults = new ArrayList<>();
         try {
             Connection connection = connect();
             String searchBookSQL = "SELECT ISBN, Title, Author, bookGenre, Status,"
@@ -298,12 +304,50 @@ public class DBService {
            ResultSet searchSet;           
            searchSet = searchBookStatement.getResultSet();
            
-           if(searchSet.next()){
-              //Getting back the data 
+          while(searchSet.next()){
+              //Getting back the data
+              searchResults = new ArrayList<>();
+              searchResults.add(searchSet.getString("ISBN"));
+              searchResults.add(searchSet.getString("Title"));
+              searchResults.add(searchSet.getString("Author"));
+              searchResults.add(searchSet.getString("bookGenre"));
+              searchResults.add(searchSet.getString("Status"));
+              searchResults.add(searchSet.getString("DueDate"));
+              
+              listOfSearchResults.add((ArrayList) searchResults);
            }
            connection.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return (listOfSearchResults);
+    }
+    
+    public List selectBooks() throws ClassNotFoundException{
+        List listOfResult;
+        List listOfLists = new ArrayList<>();
+        
+        Connection connection = connect();
+        String selectBookSQL = "SELECT ID, Title, Author, bookGenre, NumberOfBooks FROM Library";
+        
+        try {
+            PreparedStatement stat = connection.prepareStatement(selectBookSQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            
+            ResultSet selectBooksResult = stat.executeQuery();
+            while(selectBooksResult.next()){
+               listOfResult = new ArrayList<>();
+               listOfResult.add(selectBooksResult.getInt("ID"));
+               listOfResult.add(selectBooksResult.getString("Title"));
+               listOfResult.add(selectBooksResult.getString("Author"));
+               listOfResult.add(selectBooksResult.getString("bookGenre"));
+               listOfResult.add(selectBooksResult.getInt("NumberOfBooks"));
+               
+               listOfLists.add(listOfResult);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listOfLists;
     }
 }
