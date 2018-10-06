@@ -5,7 +5,11 @@
  */
 package library.catalog;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Hashtable;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -56,6 +60,8 @@ public class SearchResult extends javax.swing.JDialog {
         bookDetTable = new javax.swing.JTable();
         getButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        setDateLabel = new javax.swing.JLabel();
+        setDateField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,6 +84,11 @@ public class SearchResult extends javax.swing.JDialog {
         jScrollPane2.setViewportView(bookDetTable);
 
         getButton.setText("Get the book!");
+        getButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,27 +97,39 @@ public class SearchResult extends javax.swing.JDialog {
             }
         });
 
+        setDateLabel.setText("Set due date:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(getButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(127, 127, 127))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(setDateLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(setDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(setDateLabel)
+                    .addComponent(setDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(getButton)
                     .addComponent(cancelButton)))
@@ -119,13 +142,105 @@ public class SearchResult extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private void getButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getButtonActionPerformed
+       String date = getCurrentDate();
+       checkIfDateIsPassed(date);
+       if(LambdaFunc.CFT_DATE.test(setDateField.getText())){
+           
+       }
+       else{
+           JOptionPane.showMessageDialog(this, "Please use a date in dd/mm/yyyy format");
+       }
+    }//GEN-LAST:event_getButtonActionPerformed
+    
+    private void checkIfDateIsPassed(String date) {
+        int inputYear, inputMonth, inputDay;
+        int currYear, currMonth, currDay;
+        String inputDate = setDateField.getText();
+        String inputYearStr = "", inputMonthStr = "", inputDayStr= "";
+        String currYearStr = "", currMonthStr = "", currDayStr = "";
+        String str = "";        
+        boolean checkYear, checkMonth, checkDay;        
+        
+        for(int c = 0; c < 2; c++){
+           checkYear = true;
+           checkMonth = false;
+           checkDay = false;
+           for(int i = 0; i < setDateField.getText().length(); i++){
+               if(c == 0){
+                       if(!"/".equals(inputDate.substring(i, ++i)) && checkYear){
+                            inputYearStr += inputDate.substring(i - 1, i);
+                       }
+                       if(inputDate.substring(i, ++i).equals("/")){
+                           checkYear = false;
+                           checkMonth = true;
+                           continue;
+                       }
+                       if(!inputDate.substring(i, ++i).equals("/") && checkMonth){
+                           inputMonthStr += inputDate.substring(i - 1, i);                           
+                       }
+                       if(inputDate.substring(i, ++i).equals("/")){
+                           checkMonth = false;
+                           checkDay = true;
+                           continue;
+                       }
+                       if(!inputDate.substring(i, ++i).equals("/") && checkDay){
+                           inputDayStr += inputDate.substring(i - 1, i);                           
+                       }
+                       if(inputDate.substring(i, ++i).equals("/")){
+                           checkDay = false;
+                           continue;
+                       }                       
+               
+               }
+               
+               else{
+                       if(!"/".equals(date.substring(i, ++i)) && checkYear){
+                            currYearStr += date.substring(i - 1, i);
+                       }
+                       if(date.substring(i, ++i).equals("/")){
+                           checkYear = false;
+                           checkMonth = true;
+                           continue;
+                       }
+                       if(!date.substring(i, ++i).equals("/") && checkMonth){
+                           currMonthStr += date.substring(i - 1, i);                           
+                       }
+                       if(date.substring(i, ++i).equals("/")){
+                           checkMonth = false;
+                           checkDay = true;
+                           continue;
+                       }
+                       if(!date.substring(i, ++i).equals("/") && checkDay){
+                           currDayStr += date.substring(i - 1, i);                           
+                       }
+                       if(date.substring(i, ++i).equals("/")){
+                           checkDay = false;
+                           continue;
+                       }
+               
+                    }
+           }
+        }
+        int m = 0;
+    }
+    
+    private String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar cal = Calendar.getInstance();
+        String date = dateFormat.format(cal.getTime());
+        return date;
+        //System.out.println(dateFormat.format(cal.getTime()));
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable bookDetTable;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton getButton;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField setDateField;
+    private javax.swing.JLabel setDateLabel;
     // End of variables declaration//GEN-END:variables
-
-   
+  
+      
 }
