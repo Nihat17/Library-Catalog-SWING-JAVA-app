@@ -5,6 +5,7 @@
  */
 package library.catalog;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -25,11 +28,15 @@ public class SearchResult extends javax.swing.JDialog {
     /**
      * Creates new form SearchResult
      */
-    Return retObj = new Return();    
-    public SearchResult(java.awt.Frame parent, boolean modal, String title, String author) {
+    Return retObj = new Return();
+    int userID = 0;
+    public SearchResult(java.awt.Frame parent, boolean modal, String title,
+            String author, int userID) {
+        
         super(parent, modal);
         setLocationRelativeTo(parent);        
         initComponents();
+        this.userID = userID;
         searchBook(title, author);
     }
 
@@ -148,26 +155,34 @@ public class SearchResult extends javax.swing.JDialog {
     private void getButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getButtonActionPerformed
        String date = getCurrentDate();
        Book book = new Book();
+       Return retObj = new Return();
        if(checkIfGivenDateIsValid()){
-           List info = getDetailsOnSelectedRow();
-           book.setDueDate(setDateField.getText());
-           book.setISBN((String) info.get(0));
+           int ISBN = getDetailsOnSelectedRow();
+           book.setDueDate(setDateField.getText());           
            book.setStatus(StatusType.notAvailable); 
-           
+           try {
+               if(retObj.modifyBookTableAfterTaken(book, userID, ISBN)){
+                   JOptionPane.showMessageDialog(this, "You took the book successfully. \n"
+                           + "Please remember to bring it back on " + setDateField.getText(),                           
+                           "Information", JOptionPane.INFORMATION_MESSAGE);
+                   this.dispose();
+               }
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(SearchResult.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (SQLException ex) {
+               Logger.getLogger(SearchResult.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }
        else{
            JOptionPane.showMessageDialog(this, "Please use a date in dd/mm/yyyy format");
        }
     }//GEN-LAST:event_getButtonActionPerformed
     
-    private List getDetailsOnSelectedRow() {
+    private int getDetailsOnSelectedRow() {
        int selectedRow = bookDetTable.getSelectedRow();
-       List selectedBookDets = new ArrayList<>();
+       String ISBN = (String) bookDetTable.getValueAt(selectedRow, 0);       
        
-       selectedBookDets.add(bookDetTable.getValueAt(selectedRow, 0));
-       selectedBookDets.add(bookDetTable.getValueAt(selectedRow, 5));
-       
-       return selectedBookDets;
+       return Integer.parseInt(ISBN);
     }
     private boolean checkIfGivenDateIsValid(){
         boolean output = true;

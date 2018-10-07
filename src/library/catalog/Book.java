@@ -10,7 +10,7 @@ import java.util.Random;
 
 
 public class Book extends Library{
-   private String ISBN;   
+   private int ISBN;   
    private Enum status;
    private String dueDate;
 
@@ -24,18 +24,18 @@ public class Book extends Library{
        
    }
    
-   public String getISBN() {
-      String ISBN = "9788395055";               
+   public int getISBN() {
+      int ISBN = 0;
+      String isbn = "";
       Random rn = new Random();
-      int [] randomAdd = new int[3];
-      ISBN = "9788395055"; 
-      for(int i = 0; i < 3; i++){
+      int [] randomAdd = new int[6];
+       
+      for(int i = 0; i < 6; i++){
           randomAdd[i] = rn.nextInt(9) + 1;
-          ISBN += String.valueOf(randomAdd[i]);
+          isbn += String.valueOf(randomAdd[i]);
         }
-                  
-       return ISBN;
-    
+        ISBN = Integer.parseInt(isbn);
+       return ISBN;    
    }
 
    public void setStatus(Enum status) {
@@ -103,7 +103,7 @@ public class Book extends Library{
       return check;
     }
   
-    public void setISBN(String ISBN){
+    public void setISBN(int ISBN){
       this.ISBN = ISBN;
     }
 }

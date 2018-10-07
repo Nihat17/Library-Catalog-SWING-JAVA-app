@@ -204,7 +204,7 @@ public class AddBookPage extends javax.swing.JFrame {
      
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
       StringBuilder warnings; 
-      //BookGenre genre = BookGenre.valueOf(genreField.getText());
+      
       warnings = book.checkForTypo(idField.getText(), titleField.getText(), authorField.getText(),
               pageCountField.getText(), pubDateField.getText(), genreField.getText(), editionField.getText()); 
        

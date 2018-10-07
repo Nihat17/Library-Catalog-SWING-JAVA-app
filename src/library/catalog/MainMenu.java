@@ -239,7 +239,11 @@ public class MainMenu extends javax.swing.JFrame {
         seekForUser();
     }//GEN-LAST:event_signInButtonActionPerformed
      else if(chosenType.equals(Types.staff)){
-        seekForStaff();
+         try {
+             seekForStaff();
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+         }
      }
      else if(chosenType.equals(Types.undefined))
          JOptionPane.showMessageDialog(this, "Please define as User or Staff !", 
@@ -247,7 +251,7 @@ public class MainMenu extends javax.swing.JFrame {
      
     }
     
-    private void seekForStaff() {
+    private void seekForStaff() throws ClassNotFoundException {
         retObj =staff.checkforTypo(idTextField.getText(), firstNameField.getText(),
                 surnameField.getText(), "", false );
         

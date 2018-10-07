@@ -209,7 +209,7 @@ public class DBService {
        return numberOfBooks;
    }
    
-   boolean addBook(Book book, String ISBN){
+   boolean addBook(Book book, int ISBN){
        int successForAddBook = -1;
        int addISBNSuccess = -1;
        boolean checkSuccessISBN = true;
@@ -235,7 +235,7 @@ public class DBService {
             PreparedStatement addISBNstatement = connect.prepareStatement
                    (addISBNsql, Statement.RETURN_GENERATED_KEYS);
                         
-               addISBNstatement.setString(1, book.getISBN());
+               addISBNstatement.setInt(1, book.getISBN());
                addISBNstatement.setInt(2, book.getBookID());
                addISBNstatement.setString(3, String.valueOf(book.getStatus()));
                addISBNSuccess = addISBNstatement.executeUpdate();           
@@ -276,7 +276,7 @@ public class DBService {
             PreparedStatement addISBNstatement = connection.prepareStatement
                    (addISBNsql, Statement.RETURN_GENERATED_KEYS);
                         
-            addISBNstatement.setString(1, book.getISBN());
+            addISBNstatement.setInt(1, book.getISBN());
             addISBNstatement.setInt(2, book.getBookID());
             addISBNstatement.setString(3, String.valueOf(book.getStatus()));
             addISBNSuccess = addISBNstatement.executeUpdate();      
@@ -352,19 +352,18 @@ public class DBService {
         }
         return listOfLists;
     }
-    boolean modifyBookTableAfterTaken(Book book, int userID) throws ClassNotFoundException, SQLException{
+    boolean modifyBookTableAfterTaken(Book book, int userID, int ISBN) throws ClassNotFoundException, SQLException{
         Connection connection = connect();
         int insertSuccess = -1;
         int updateSuccess = -1;
-        String addUser = "UPDATE Books SET Books.DueDate = ?, "
-                + "Books.UserID = ? WHERE Books.ISBN = ?";
+        String addUser = "UPDATE Books SET Books.DueDate = ?, Books.UserID = ? WHERE Books.ISBN = ?";
         PreparedStatement modifyBooksStat = connection.prepareStatement(addUser,
                 Statement.RETURN_GENERATED_KEYS);
         
         modifyBooksStat.setString(1, book.getDueDate());
         modifyBooksStat.setInt(2, userID);
-        modifyBooksStat.setString(3, book.getISBN());
-        insertSuccess = modifyBooksStat.executeUpdate();
+        modifyBooksStat.setInt(3, ISBN);
+        insertSuccess = modifyBooksStat.executeUpdate();                
         
         String updateStatus = "UPDATE Books SET Books.Status = 'Not Available' "
                 + "WHERE Books.UserID = ?";

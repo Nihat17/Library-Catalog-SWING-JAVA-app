@@ -52,7 +52,7 @@ public class Return {
         return(database.searchStaff(staff));
     }
     
-    public boolean addBook(Book book, String ISBN){
+    public boolean addBook(Book book, int ISBN){
         return(database.addBook(book, ISBN));
     }
     
@@ -73,9 +73,9 @@ public class Return {
     public List selectBooks() throws ClassNotFoundException{
         return(database.selectBooks());
     }
-    public boolean modifyBookTableAfterTaken(Book book, int userID) throws 
+    public boolean modifyBookTableAfterTaken(Book book, int userID,int ISBN) throws 
             ClassNotFoundException, SQLException{
-                return (database.modifyBookTableAfterTaken(book, userID));
+        return (database.modifyBookTableAfterTaken(book, userID, ISBN));
     }
     
 }
