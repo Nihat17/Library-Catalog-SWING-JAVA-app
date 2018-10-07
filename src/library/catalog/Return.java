@@ -73,5 +73,9 @@ public class Return {
     public List selectBooks() throws ClassNotFoundException{
         return(database.selectBooks());
     }
+    public boolean modifyBookTableAfterTaken(Book book, int userID) throws 
+            ClassNotFoundException, SQLException{
+                return (database.modifyBookTableAfterTaken(book, userID));
+    }
     
 }

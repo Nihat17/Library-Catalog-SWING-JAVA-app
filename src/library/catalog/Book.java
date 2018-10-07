@@ -38,14 +38,18 @@ public class Book extends Library{
     
    }
 
-    public void setStatus(Enum status) {
-        this.status = status;
-    }
+   public void setStatus(Enum status) {
+       this.status = status;
+   }
 
    public Enum getStatus() {
        return status;
    }
 
+   public void setDueDate(String dueDate){
+       this.dueDate = dueDate;
+   }
+   
    public String getDueDate() {
        return dueDate;
    }
@@ -99,16 +103,7 @@ public class Book extends Library{
       return check;
     }
   
-    public String setISBN(){
-        
-        String ISBN = "9788395055";                 
-            Random rn = new Random();
-            int [] randomAdd = new int[3];
-            ISBN = "9788395055"; 
-            for(int i = 0; i < 3; i++){
-              randomAdd[i] = rn.nextInt(9) + 1;
-              ISBN += String.valueOf(randomAdd[i]);
-            }                   
-        return ISBN;
+    public void setISBN(String ISBN){
+      this.ISBN = ISBN;
     }
 }

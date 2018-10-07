@@ -352,4 +352,28 @@ public class DBService {
         }
         return listOfLists;
     }
+    boolean modifyBookTableAfterTaken(Book book, int userID) throws ClassNotFoundException, SQLException{
+        Connection connection = connect();
+        int insertSuccess = -1;
+        int updateSuccess = -1;
+        String addUser = "UPDATE Books SET Books.DueDate = ?, "
+                + "Books.UserID = ? WHERE Books.ISBN = ?";
+        PreparedStatement modifyBooksStat = connection.prepareStatement(addUser,
+                Statement.RETURN_GENERATED_KEYS);
+        
+        modifyBooksStat.setString(1, book.getDueDate());
+        modifyBooksStat.setInt(2, userID);
+        modifyBooksStat.setString(3, book.getISBN());
+        insertSuccess = modifyBooksStat.executeUpdate();
+        
+        String updateStatus = "UPDATE Books SET Books.Status = 'Not Available' "
+                + "WHERE Books.UserID = ?";
+        PreparedStatement statement = connection.prepareStatement(updateStatus,
+                Statement.RETURN_GENERATED_KEYS);
+        
+        statement.setInt(1, userID);
+        updateSuccess = statement.executeUpdate();
+        
+        return(insertSuccess > 0 && updateSuccess > 0);
+    }
 }

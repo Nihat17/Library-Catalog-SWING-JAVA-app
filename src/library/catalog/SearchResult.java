@@ -7,6 +7,9 @@ package library.catalog;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
@@ -144,14 +147,39 @@ public class SearchResult extends javax.swing.JDialog {
 
     private void getButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getButtonActionPerformed
        String date = getCurrentDate();
-       checkIfDateIsPassed(date);
-       if(LambdaFunc.CFT_DATE.test(setDateField.getText())){
+       Book book = new Book();
+       if(checkIfGivenDateIsValid()){
+           List info = getDetailsOnSelectedRow();
+           book.setDueDate(setDateField.getText());
+           book.setISBN((String) info.get(0));
+           book.setStatus(StatusType.notAvailable); 
            
        }
        else{
            JOptionPane.showMessageDialog(this, "Please use a date in dd/mm/yyyy format");
        }
     }//GEN-LAST:event_getButtonActionPerformed
+    
+    private List getDetailsOnSelectedRow() {
+       int selectedRow = bookDetTable.getSelectedRow();
+       List selectedBookDets = new ArrayList<>();
+       
+       selectedBookDets.add(bookDetTable.getValueAt(selectedRow, 0));
+       selectedBookDets.add(bookDetTable.getValueAt(selectedRow, 5));
+       
+       return selectedBookDets;
+    }
+    private boolean checkIfGivenDateIsValid(){
+        boolean output = true;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try{
+            LocalDate date = formatter.parse(setDateField.getText(), LocalDate::from);
+        }
+        catch(DateTimeParseException ex){
+            output = false;
+        }
+        return output;
+    }
     
     private void checkIfDateIsPassed(String date) {
         int inputYear, inputMonth, inputDay;
@@ -229,8 +257,7 @@ public class SearchResult extends javax.swing.JDialog {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Calendar cal = Calendar.getInstance();
         String date = dateFormat.format(cal.getTime());
-        return date;
-        //System.out.println(dateFormat.format(cal.getTime()));
+        return date;        
     }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -241,6 +268,5 @@ public class SearchResult extends javax.swing.JDialog {
     private javax.swing.JTextField setDateField;
     private javax.swing.JLabel setDateLabel;
     // End of variables declaration//GEN-END:variables
-  
-      
+        
 }
