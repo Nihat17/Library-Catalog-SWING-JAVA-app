@@ -191,15 +191,16 @@ public class UserAccountPage extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
        SearchResult menu;
-        if(!titleField.getText().isEmpty() && !authorField.getText().isEmpty()){
+       int userID = Integer.parseInt(idField.getText());
+       if(!titleField.getText().isEmpty() && !authorField.getText().isEmpty()){            
             menu = new SearchResult(this, false, titleField.getText(), 
-                   authorField.getText());
+                   authorField.getText(), userID);
             menu.setVisible(true);
-        }
-        else{
+       }
+       else{
             JOptionPane.showMessageDialog(this, "Please fill in title and author fields properly!",
                     "Error", JOptionPane.WARNING_MESSAGE);
-        }
+       }
        
        
     }//GEN-LAST:event_searchButtonActionPerformed

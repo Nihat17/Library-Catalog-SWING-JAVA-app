@@ -2,7 +2,10 @@ package library.catalog;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,7 +34,7 @@ public class StaffAccountPage extends javax.swing.JFrame {
         getAndSetBookList();
         fillStaffDetails();        
     } 
-
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,22 +168,34 @@ public class StaffAccountPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void getAndSetBookList() throws ClassNotFoundException {
-       List listOfBooks = retObj.selectBooks();
-       List<Object> listBook;
-       DefaultTableModel model = (DefaultTableModel) listOfBooksTable.getModel();
-       
-       for(int i = 0; i < listOfBooks.size(); i++){
-           listBook = (List<Object>) listOfBooks.get(i);
-           model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
-             listBook.get(3), listBook.get(4), listBook.get(5), listBook.get(6)});           
-       }
+       List listOfBooks = retObj.selectBooks();     
+       retObj.setBookTable(listOfBooksTable, listOfBooks);
+      
     }
      
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
-        AddBookPage menu = new AddBookPage();
-        menu.setVisible(true);
+        AddBookPage menu = new AddBookPage(this, true);                
+        menu.setVisible(true);         
+        if(!menu.getBook().getAuthor().isEmpty()){
+            List listsOfBooks = new ArrayList<>();
+            listsOfBooks.add(getBookDetailsFromFields(menu.getBook()));
+            retObj.setBookTable(listOfBooksTable, listsOfBooks);
+        }
+            //retObj.setBookList(listOfBooksTable, getBookDetailsFromFields());
     }//GEN-LAST:event_addBookButtonActionPerformed
 
+    private List getBookDetailsFromFields(Book book) {
+        List<String> bookDetails = new ArrayList<>();
+        bookDetails.add(String.valueOf(book.getBookID()));
+        bookDetails.add(book.getTitle());
+        bookDetails.add(book.getAuthor());
+        bookDetails.add(book.getBookGenre());
+        bookDetails.add("available");
+        bookDetails.add(String.valueOf(book.getPageCount()));
+        bookDetails.add("");        
+        return bookDetails;
+    }
+    
     private void fillStaffDetails() {
      idField.setText(String.valueOf(staff.getID()));
      firstNameField.setText(staff.getFirstName());
@@ -220,6 +235,5 @@ public class StaffAccountPage extends javax.swing.JFrame {
     private javax.swing.JLabel numberLabel;
     private javax.swing.JLabel staffAccountLabel;
     // End of variables declaration//GEN-END:variables
-  
-      
+           
 }

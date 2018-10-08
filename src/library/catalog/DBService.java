@@ -291,7 +291,7 @@ public class DBService {
         List <ArrayList> listOfSearchResults = new ArrayList<>();
         try {
             Connection connection = connect();
-            String searchBookSQL = "SELECT ISBN, Title, Author, bookGenre, Status,"
+            String searchBookSQL = "SELECT ISBN, Title, Author, bookGenre,  Status,"
                     + "DueDate FROM Library INNER JOIN Books ON Library.ID = "
                     + "Books.LibraryID WHERE Library.Title = ? AND Library.Author = ?";
             

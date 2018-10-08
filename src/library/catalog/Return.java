@@ -7,6 +7,8 @@ package library.catalog;
 
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Return {
@@ -14,6 +16,7 @@ public class Return {
     StringBuilder warnings = new StringBuilder();
     DBService database = new DBService();
     Staff staff = new Staff();
+    
     Return(User user, StringBuilder warnings){
         this.user = user;
         this.warnings = warnings;
@@ -77,5 +80,21 @@ public class Return {
             ClassNotFoundException, SQLException{
         return (database.modifyBookTableAfterTaken(book, userID, ISBN));
     }
+    public void setBookTable(JTable table, List listOfBooks){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        List<Object> listBook;
+        for(int i = 0; i < listOfBooks.size(); i++){
+           listBook = (List<Object>) listOfBooks.get(i);
+           model.addRow(new Object[] {listBook.get(0), listBook.get(1), listBook.get(2),
+             listBook.get(3), listBook.get(4), listBook.get(5), listBook.get(6)});           
+       }
+    }
+    Book book;
+    public void setBook(Book book){
+        this.book = book;
+    }
     
+    public Book getBook(){
+        return book;
+    }          
 }

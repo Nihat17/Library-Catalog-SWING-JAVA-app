@@ -258,7 +258,7 @@ public class MainMenu extends javax.swing.JFrame {
         if(Library.checkForLength(retObj.getWarnings())){
             if(retObj.searchStaff(retObj.getStaff())){
                 this.dispose();
-                StaffAccountPage menu = new StaffAccountPage(retObj.getStaff());
+                StaffAccountPage menu = new StaffAccountPage(retObj.getStaff());               
                 menu.setVisible(true);
             }
             else {
